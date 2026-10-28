@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>palo-ui-system · catálogo</title>
+<link rel="stylesheet" href="css/palo-ui-system.css">
+<style>
+  main { max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; }
+  section { margin-top: 32px; }
+  .fila { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 12px; }
+  .muestras { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 12px; }
+  .muestra { border: 1px solid var(--borde); border-radius: var(--r-md); overflow: hidden; background: var(--panel); }
+  .muestra i { display: block; height: 40px; border-bottom: 1px solid var(--borde); }
+  .muestra span { display: block; padding: 6px 8px; font: 500 .7rem var(--mono); color: var(--sub); }
+  .bloque { background: var(--panel); border: 1px solid var(--borde); border-radius: var(--r-lg); padding: 16px; margin-top: 12px; }
+  .cod { font: 800 .78rem var(--mono); letter-spacing: .05em; }
+  .campo { max-width: 320px; margin-top: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="fila" style="justify-content: space-between">
+    <h1 class="titulo-pagina">palo-ui-system · catálogo</h1>
+    <button id="tema" type="button">Alternar tema</button>
+  </div>
+  <p class="sub">Vista de los tokens y las clases CSS del paquete. Los componentes Vue se prueban desde un proyecto Vue 3 que instale el paquete.</p>
+
+  <section>
+    <p class="etiqueta-seccion">Color · superficies y texto</p>
+    <div class="muestras" id="muestras-base"></div>
+    <p class="etiqueta-seccion" style="margin-top:20px">Color · señal y semántica</p>
+    <div class="muestras" id="muestras-sem"></div>
+  </section>
+
+  <section>
+    <p class="etiqueta-seccion">Tipografía</p>
+    <div class="bloque">
+      <div class="titulo-pagina">Título de página · Inter 700</div>
+      <p>Texto de interfaz, Inter 14 px con números tabulares: 0123456789.</p>
+      <p><span class="cod">INC-0042</span> &nbsp;<span class="cod" style="color:var(--sub)">código en JetBrains Mono ExtraBold</span></p>
+    </div>
+  </section>
+
+  <section>
+    <p class="etiqueta-seccion">Botones y etiquetas</p>
+    <div class="fila">
+      <button type="button" class="primario">Acción principal</button>
+      <button type="button">Secundaria</button>
+      <button type="button" class="peligro">Peligro</button>
+      <button type="button" disabled>Deshabilitada</button>
+    </div>
+    <div class="fila">
+      <span class="tag">Neutro</span><span class="tag ok">Ok</span><span class="tag aviso">Aviso</span>
+      <span class="tag error">Error</span><span class="tag info">Info</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="etiqueta-seccion">Formulario</p>
+    <div class="campo"><label for="a">Texto</label><input id="a" value="Valor"></div>
+    <div class="campo"><label for="b">Lista</label><select id="b"><option>Una</option><option>Otra</option></select></div>
+    <div class="campo"><label for="c">Mensaje</label><textarea id="c">Texto largo…</textarea></div>
+  </section>
+
+  <section>
+    <p class="etiqueta-seccion">Tabla</p>
+    <div class="tabla-simple" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Código</th><th>Asunto</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td class="cod">INC-0042</td><td>Acceso a repositorio</td><td><span class="tag info">Procesando</span></td></tr>
+          <tr><td class="cod">SOL-0007</td><td>Alta de usuario</td><td><span class="tag ok">Cerrado</span></td></tr>
+          <tr><td class="cod">CAM-0003</td><td>Cambio de firewall</td><td><span class="tag aviso">Espera</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+<script>
+  const leer = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const pintar = (id, nombres) => {
+    document.getElementById(id).innerHTML = nombres.map((n) =>
+      `<div class="muestra"><i style="background:var(${n})"></i><span>${n}<br>${leer(n)}</span></div>`).join('');
+  };
+  const dibujar = () => {
+    pintar('muestras-base', ['--bg', '--panel', '--panel-2', '--borde', '--borde-fuerte', '--txt', '--sub', '--tenue']);
+    pintar('muestras-sem', ['--senal', '--grafito', '--ok', '--aviso', '--error', '--info', '--e-aceptado', '--e-curso', '--e-espera']);
+  };
+  dibujar();
+  document.getElementById('tema').onclick = () => {
+    const r = document.documentElement;
+    const claro = r.dataset.theme ? r.dataset.theme === 'light' : matchMedia('(prefers-color-scheme: light)').matches;
+    r.dataset.theme = claro ? 'dark' : 'light';
+    dibujar();
+  };
+</script>
+</body>
+</html>

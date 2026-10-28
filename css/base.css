@@ -1,0 +1,41 @@
+/* Estilos base y utilidades. Requiere tokens.css. */
+* { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: var(--borde-fuerte) transparent; }
+body { margin: 0; background: var(--bg); color: var(--txt); font: 14px/1.45 var(--ui); font-variant-numeric: tabular-nums; }
+a { color: var(--info); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--senal); outline-offset: 2px; }
+input, select, textarea { padding: 8px 10px; border: 1px solid var(--borde-fuerte); border-radius: var(--r-md); background: var(--panel-2); width: 100%; }
+select { appearance: none; padding-right: 28px; background-image: linear-gradient(45deg, transparent 50%, var(--sub) 50%), linear-gradient(135deg, var(--sub) 50%, transparent 50%); background-position: calc(100% - 15px) 55%, calc(100% - 10px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
+select option { background: var(--panel); color: var(--txt); }
+textarea { resize: vertical; min-height: 70px; }
+button { cursor: pointer; padding: 7px 14px; border-radius: var(--r-md); border: 1px solid var(--borde-fuerte); background: var(--panel); }
+button:hover { border-color: var(--txt); }
+button.primario { background: var(--senal); color: var(--senal-txt); border-color: var(--senal); font-weight: 700; }
+button.primario:hover { filter: brightness(1.06); }
+button.peligro { color: var(--error); }
+button:disabled { opacity: .5; cursor: default; }
+label { display: block; font-size: .8rem; font-weight: 600; color: var(--sub); margin: 0 0 4px; }
+.error { color: var(--error); margin: 8px 0; }
+.sub { color: var(--sub); }
+.pill { display: inline-block; padding: 1px 8px; border-radius: 99px; font-size: .75rem; font-weight: 600; color: #fff; }
+.vencido { color: var(--error); font-weight: 600; }
+.pronto { color: var(--aviso); font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* Marco con barra lateral (layouts/Base.astro): la columna se reserva antes de que cargue la barra */
+.app-con-nav { display: grid; grid-template-columns: 232px minmax(0, 1fr); min-height: 100vh; }
+.app-con-nav > .contenido { min-width: 0; }
+@media (max-width: 860px) { .app-con-nav { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); } }
+
+/* Etiqueta rectangular de una palabra (resultados, banderas); el color sale de --c o de la variante */
+.tag { --c: var(--tenue); display: inline-flex; align-items: center; padding: 1px 8px; border: 1.5px solid var(--c); border-radius: var(--r-sm); font: 700 .66rem var(--mono); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; color: color-mix(in srgb, var(--c) 70%, var(--txt)); }
+.tag.ok { --c: var(--ok); } .tag.error { --c: var(--error); } .tag.aviso { --c: var(--aviso); } .tag.info { --c: var(--info); }
+/* Tabla de pantallas de administración */
+.tabla-simple { overflow-x: auto; background: var(--panel); border: 1px solid var(--borde); border-radius: var(--r-lg); }
+.tabla-simple table { width: 100%; border-collapse: collapse; }
+.tabla-simple th, .tabla-simple td { text-align: left; padding: 0 12px; height: 44px; border-bottom: 1px solid var(--borde); }
+.tabla-simple th { height: 34px; font: 600 .66rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--sub); }
+.tabla-simple tbody tr:last-child td { border-bottom: 0; }
+.tabla-simple tbody tr:hover { background: var(--panel-2); }
+.titulo-pagina { margin: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; }
+.etiqueta-seccion { margin: 0; font: 600 .66rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--sub); }
