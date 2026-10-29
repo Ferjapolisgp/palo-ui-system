@@ -1,6 +1,7 @@
 // Punto de entrada de los componentes Vue 3. Requiere css/palo-ui-system.css cargado en la página.
 
 // Interfaz genérica
+export { default as ActionCard } from './components/ui/ActionCard.vue';
 export { default as Aviso } from './components/ui/Aviso.vue';
 export { default as Avatar } from './components/ui/Avatar.vue';
 export { default as BarraHerramientas } from './components/ui/BarraHerramientas.vue';
@@ -30,6 +31,7 @@ export { default as Popover } from './components/ui/Popover.vue';
 export { default as Skeleton } from './components/ui/Skeleton.vue';
 export { default as Spin } from './components/ui/Spin.vue';
 export { default as Tarjeta } from './components/ui/Tarjeta.vue';
+export { default as ProfileCard } from './components/ui/ProfileCard.vue';
 export { default as Tooltip } from './components/ui/Tooltip.vue';
 export { default as Vacio } from './components/ui/Vacio.vue';
 export { aplicarTema, leerTema } from './lib/tema.js';
