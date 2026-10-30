@@ -66,7 +66,7 @@ onBeforeUnmount(() => document.removeEventListener('keydown', tecla));
   <div :class="{ 'menu-abierto': menuAbierto }">
     <header class="top">
       <button type="button" class="icono menu-btn" :aria-expanded="menuAbierto" aria-label="Abrir menú" @click="menuAbierto = !menuAbierto"><Icono nombre="menu" /></button>
-      <RouterLink to="/" class="top-logo" aria-label="Palo UI, inicio"><Marca producto="UI" /></RouterLink>
+      <RouterLink to="/" class="top-logo" aria-label="Palo UI, inicio"><Marca producto="UI" serie="Sistema visual" /></RouterLink>
       <div class="buscador">
         <Icono nombre="buscar" :tam="16" />
         <input ref="buscador" v-model="busqueda" type="search" placeholder="Buscar componentes" aria-label="Buscar componentes" autocomplete="off"

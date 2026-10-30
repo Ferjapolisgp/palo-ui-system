@@ -29,8 +29,10 @@ export const COMPONENTES = {
   logo: {
     titulo: 'Logo', grupo: 'Base', origen: 'vue/components/ui/Marca.vue',
     desc: 'El cardón en el cuadro verde con esquinas marcadas, «PALO» y el nombre de la herramienta. Cada producto pasa el suyo; el resto del logo es igual en todos.',
-    demos: { '01-variantes': ['Por producto', 'Sin producto, con producto y serie, grande para pantallas de ingreso y solo ícono para la barra lateral colapsada.'] },
-    props: [['producto', 'String', "''", 'Segunda parte del nombre: Pay, Docs, Onboarding, Tickets. Se muestra en mayúsculas.'], ['serie', 'String', "''", 'Texto bajo el nombre. Vacío no se muestra.'], ['grande', 'Boolean', 'false', 'Versión de 48 px.'], ['solo-icono', 'Boolean', 'false', 'Solo el cardón, con aria-label «Palo» más el producto.']],
+    demos: { '01-variantes': ['Variantes', 'Por producto, tamaños, orientación vertical, «PALO» en verde, una sola tinta, solo texto y solo ícono para la barra lateral colapsada.'] },
+    props: [['producto', 'String', "''", 'Segunda parte del nombre: Pay, Docs, Onboarding, Tickets. Se muestra en mayúsculas.'], ['serie', 'String', "''", 'Texto bajo el nombre. Vacío no se muestra.'], ['tam', 'String', "'md'", "'sm' (22 px), 'md' (30) o 'lg' (48): lado del cardón."], ['grande', 'Boolean', 'false', "Alias de tam='lg'."],
+      ['orientacion', 'String', "'horizontal'", "'horizontal' o 'vertical' (cardón arriba, texto centrado)."], ['tono', 'String', "'color'", "'color' o 'mono': una sola tinta (cuadro en --txt, figura recortada con el fondo)."], ['verde', 'Boolean', 'false', '«PALO» en el verde del logo (--logo-fondo).'],
+      ['solo-icono', 'Boolean', 'false', 'Solo el cardón, con aria-label «Palo» más el producto.'], ['solo-texto', 'Boolean', 'false', 'Solo el nombre, sin el cuadro.']],
   },
   icono: {
     titulo: 'Ícono', grupo: 'Base', origen: 'vue/components/ui/Icono.vue · vue/lib/iconos.js',
