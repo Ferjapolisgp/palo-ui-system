@@ -25,7 +25,7 @@ const atributos = computed(() => (props.to && props.enlace ? { to: props.to } : 
   <component :is="etiqueta" v-bind="atributos" class="accion encuadre" :class="{ deshabilitada: disabled }" @click="emit('abrir')">
     <span v-if="icono" class="icono-caja" aria-hidden="true"><Icono :nombre="icono" :tam="20" /></span>
     <span class="textos"><b>{{ titulo }}</b><small v-if="texto">{{ texto }}</small></span>
-    <span v-if="contador !== undefined && contador !== null" class="contador" :class="tono"><span class="oculto">Pendientes: </span>{{ contador }}</span>
+    <span v-if="contador !== undefined && contador !== null" class="contador" :class="tono && `tono-${tono}`"><span class="oculto">Pendientes: </span>{{ contador }}</span>
     <Icono nombre="derecha" :tam="16" class="flecha" aria-hidden="true" />
   </component>
 </template>
@@ -39,8 +39,8 @@ const atributos = computed(() => (props.to && props.enlace ? { to: props.to } : 
 .textos b { font-size: .95rem; }
 .textos small { font-size: .8rem; color: var(--sub); font-weight: 400; }
 .contador { flex: none; padding: 1px 9px; border: 1.5px solid var(--borde-fuerte); border-radius: 99px; font: 700 .76rem var(--mono); }
-.contador.aviso { border-color: var(--aviso); color: var(--aviso); }
-.contador.error { border-color: var(--error); color: var(--error); }
+.contador.tono-aviso { border-color: var(--aviso); color: var(--aviso); }
+.contador.tono-error { border-color: var(--error); color: var(--error); }
 .flecha { flex: none; color: var(--tenue); transition: transform .15s; }
 .deshabilitada { opacity: .5; cursor: default; pointer-events: none; }
 .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }

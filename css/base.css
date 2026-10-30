@@ -36,7 +36,8 @@ button:disabled:hover { border-color: var(--borde); }
 button.icono { display: inline-grid; place-items: center; width: 32px; height: 32px; padding: 0; color: var(--sub); }
 button.icono:hover { color: var(--txt); }
 label { display: block; font-size: .8rem; font-weight: 600; color: var(--sub); margin: 0 0 4px; }
-.error { color: var(--error); margin: 8px 0; }
+.error { color: var(--error); }
+p.error { margin: 8px 0; }
 .sub { color: var(--sub); }
 .pill { display: inline-block; padding: 1px 8px; border-radius: 99px; font-size: .75rem; font-weight: 600; color: #fff; }
 .vencido { color: var(--error); font-weight: 600; }

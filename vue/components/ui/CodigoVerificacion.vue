@@ -66,7 +66,7 @@ defineExpose({ enfocar });
 </script>
 
 <template>
-  <div class="codigo" :class="{ error }" role="group" :aria-label="etiqueta" :style="{ '--largo': largo }">
+  <div class="codigo" :class="{ 'con-error': error }" role="group" :aria-label="etiqueta" :style="{ '--largo': largo }">
     <input v-for="(d, i) in digitos" :key="i" :ref="(el) => (casillas[i] = el)" :value="d" type="text"
            inputmode="numeric" pattern="[0-9]*" placeholder="0" :autocomplete="i === 0 ? 'one-time-code' : 'off'"
            :aria-label="`Dígito ${i + 1} de ${largo}`" :aria-invalid="error || undefined" :disabled="disabled"
@@ -80,8 +80,8 @@ input { height: 56px; padding: 0; text-align: center; font: 600 1.45rem var(--mo
 input::placeholder { color: var(--tenue); opacity: 1; }
 input:focus { outline: none; border-color: var(--senal); box-shadow: 0 0 0 3px color-mix(in srgb, var(--senal) 28%, transparent); }
 input:focus::placeholder { color: transparent; }
-.error input { border-color: var(--error); }
-.error input:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--error) 25%, transparent); }
+.con-error input { border-color: var(--error); }
+.con-error input:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--error) 25%, transparent); }
 input:disabled { opacity: .55; }
 @media (max-width: 420px) { .codigo { gap: 6px; } input { height: 48px; font-size: 1.2rem; } }
 </style>

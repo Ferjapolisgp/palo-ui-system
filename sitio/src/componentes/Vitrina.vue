@@ -69,7 +69,7 @@ function asignar() {
         <DataTable v-model:seleccion="seleccion" v-model:orden="orden" :columnas="COLUMNAS" :filas="visibles" titulo="Bandeja de solicitudes" clave-fila="codigo"
                    seleccionable orden-local fila-clicable @fila="abrir">
           <template #celda-estado="{ fila }">
-            <Advertencia v-if="fila.tono === 'error'">Vencida hace {{ fila.horas - PLAZO }} h</Advertencia>
+            <Advertencia v-if="fila.tono === 'error'" animada>Vencida hace {{ fila.horas - PLAZO }} h</Advertencia>
             <Advertencia v-else-if="fila.tono === 'aviso'" tono="aviso">Vence en {{ PLAZO - fila.horas }} h</Advertencia>
             <span v-else class="tag" :class="fila.tono">{{ fila.estado }}</span>
           </template>

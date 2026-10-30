@@ -32,7 +32,7 @@ const tabla = computed(() => ({ columnas: ['', 'Valor', 'Tope', '%'], filas: ite
       <div class="escala"><span></span><div><span :style="{ left: marca + '%' }">Tope</span></div><span></span></div>
       <div v-for="it in items" :key="it.f[nombre]" class="fila">
         <div class="quien"><b>{{ it.f[nombre] }}</b><small v-if="detalle">{{ it.f[detalle] }}</small></div>
-        <div class="barra"><i :class="it.estado[0]" :style="{ width: it.ancho + '%' }"></i><span class="marca" :style="{ left: marca + '%' }"></span></div>
+        <div class="barra"><i :class="`tono-${it.estado[0]}`" :style="{ width: it.ancho + '%' }"></i><span class="marca" :style="{ left: marca + '%' }"></span></div>
         <div class="dato"><b>{{ Math.round(it.p) }} %</b><span class="tag" :class="it.estado[0]">{{ it.estado[1] }}</span><small>{{ formato(it.f[valor]) }} de {{ formato(it.f[limite]) }}</small></div>
       </div>
     </div>
@@ -48,8 +48,8 @@ const tabla = computed(() => ({ columnas: ['', 'Valor', 'Tope', '%'], filas: ite
 .quien small { font: 600 .7rem var(--mono); color: var(--sub); }
 .barra { position: relative; height: 14px; background: var(--panel-2); border: 1px solid var(--borde); border-radius: var(--r-sm); }
 .barra i { position: absolute; inset: 0 auto 0 0; border-radius: 3px; background: var(--serie-1); }
-.barra i.aviso { background: var(--aviso); }
-.barra i.error { background: var(--error); }
+.barra i.tono-aviso { background: var(--aviso); }
+.barra i.tono-error { background: var(--error); }
 .marca { position: absolute; top: -6px; bottom: -6px; width: 2px; background: var(--txt); transform: translateX(-1px); }
 .dato { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
 .dato b { font: 700 .92rem var(--mono); }

@@ -23,6 +23,10 @@ const demos = computed(() => demosDe(props.id).map((d) => ({ ...d, titulo: c.val
       <h2 id="props">{{ c.tituloProps || 'Props' }}</h2>
       <TablaApi :columnas="['Nombre', 'Tipo', 'Por defecto', 'Descripción']" :filas="c.props" />
     </section>
+    <section v-if="c.extra">
+      <h2 id="extra">{{ c.extra.titulo }}</h2>
+      <TablaApi :columnas="c.extra.columnas" :filas="c.extra.filas" />
+    </section>
     <section v-if="c.eventos">
       <h2 id="eventos">Eventos</h2>
       <TablaApi :columnas="['Evento', 'Cuándo']" :filas="c.eventos" />

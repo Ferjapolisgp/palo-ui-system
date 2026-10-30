@@ -27,7 +27,7 @@ const ayuda = computed(() => {
 
 <template>
   <span v-if="nivel === 'nada'" class="sin">---</span>
-  <span v-else class="medidor" :class="nivel" :title="ayuda">
+  <span v-else class="medidor" :class="nivel && `tono-${nivel}`" :title="ayuda">
     <span class="tramos"><i v-for="n in t.total" :key="n" :class="{ on: n <= t.llenos }" /></span>
     <span v-if="!sinTexto" class="tx">{{ texto }}</span>
   </span>
@@ -35,14 +35,14 @@ const ayuda = computed(() => {
 
 <style scoped>
 .medidor { --c: var(--ok); display: inline-flex; align-items: center; gap: 8px; }
-.medidor.aviso { --c: var(--aviso); }
-.medidor.error { --c: var(--error); }
+.medidor.tono-aviso { --c: var(--aviso); }
+.medidor.tono-error { --c: var(--error); }
 .tramos { display: inline-flex; gap: 2px; width: 38px; flex: none; }
 i { flex: 1; min-width: 0; height: 12px; border-radius: 1px; background: var(--borde-fuerte); }
 i.on { background: var(--c); }
 .tx { font-size: .75rem; color: var(--sub); white-space: nowrap; }
-.aviso .tx, .error .tx { font-weight: 600; }
-.aviso .tx { color: var(--aviso); }
-.error .tx { color: var(--error); }
+.tono-aviso .tx, .tono-error .tx { font-weight: 600; }
+.tono-aviso .tx { color: var(--aviso); }
+.tono-error .tx { color: var(--error); }
 .sin { color: var(--tenue); letter-spacing: .1em; }
 </style>

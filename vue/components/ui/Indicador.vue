@@ -115,7 +115,7 @@ const detalle = computed(() => {
 </script>
 
 <template>
-  <div class="indicador encuadre" :class="[tono, `forma-${forma}`]">
+  <div class="indicador encuadre" :class="[tono && `tono-${tono}`, `forma-${forma}`]">
     <p class="et">{{ etiqueta }}</p>
     <strong aria-live="polite">{{ mostrado }}</strong>
     <small v-if="detalle" :class="{ punto: hover != null }">{{ detalle }}</small>
@@ -158,8 +158,8 @@ const detalle = computed(() => {
     </div>
 
     <div v-else-if="tope" class="pie">
-      <p class="estado" :class="tope.estado"><i></i>{{ tope.texto }} <b>{{ formatoPorcentaje(Math.round(tope.pct)) }} de {{ formato(limite) }}</b></p>
-      <div class="riel" :class="[tope.estado, { degrade }]" role="meter" :aria-valuenow="usado" aria-valuemin="0" :aria-valuemax="limite" :aria-label="etiqueta">
+      <p class="estado" :class="`tono-${tope.estado}`"><i></i>{{ tope.texto }} <b>{{ formatoPorcentaje(Math.round(tope.pct)) }} de {{ formato(limite) }}</b></p>
+      <div class="riel" :class="[`tono-${tope.estado}`, { degrade }]" role="meter" :aria-valuenow="usado" aria-valuemin="0" :aria-valuemax="limite" :aria-label="etiqueta">
         <span :style="{ width: `${tope.ancho}%` }"></span>
       </div>
     </div>
@@ -168,7 +168,7 @@ const detalle = computed(() => {
 
 <style scoped>
 .indicador { position: relative; --c: var(--sub); --pad-x: 14px; --pad-y: 12px; display: flex; flex-direction: column; gap: 4px; padding: var(--pad-y) var(--pad-x); background: var(--panel); border: 1px solid var(--borde); border-radius: var(--r-lg); min-width: 0; overflow: hidden; }
-.indicador.ok { --c: var(--ok); } .indicador.aviso { --c: var(--aviso); } .indicador.error { --c: var(--error); }
+.indicador.tono-ok { --c: var(--ok); } .indicador.tono-aviso { --c: var(--aviso); } .indicador.tono-error { --c: var(--error); }
 .et { margin: 0; font: 600 .66rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--sub); }
 strong { font: 700 1.35rem var(--mono); letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
 small { font-size: .76rem; color: color-mix(in srgb, var(--c) 75%, var(--txt)); }
@@ -196,10 +196,10 @@ small.punto { color: var(--sub); }
 .apagada { opacity: .35; }
 .estado { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0; padding: 0 var(--pad-x); font-size: .74rem; color: var(--sub); }
 .estado i { width: 8px; height: 8px; border-radius: 50%; background: var(--serie-1); }
-.estado.aviso i { background: var(--aviso); } .estado.error i { background: var(--error); }
+.estado.tono-aviso i { background: var(--aviso); } .estado.tono-error i { background: var(--error); }
 .estado b { margin-left: auto; }
 .riel { --r: var(--serie-1); height: 12px; background: var(--trama); }
-.riel.aviso { --r: var(--aviso); } .riel.error { --r: var(--error); }
+.riel.tono-aviso { --r: var(--aviso); } .riel.tono-error { --r: var(--error); }
 .riel span { display: block; height: 100%; background: var(--r); }
 .riel.degrade span { background: linear-gradient(90deg, color-mix(in srgb, var(--r) 30%, var(--tenue)), var(--r)); }
 @media (prefers-reduced-motion: reduce) { .barra, .leyenda li, .pila span { transition: none; } }

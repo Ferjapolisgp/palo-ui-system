@@ -37,7 +37,7 @@ const atributos = (it) => (!it.ruta ? { type: 'button' } : props.enlace ? { to: 
           <Icono v-if="it.icono" :nombre="it.icono" :tam="colapsada ? 24 : 18" />
           <span class="texto">{{ it.texto }}</span>
           <kbd v-if="it.atajo && !colapsada" class="atajo">{{ it.atajo }}</kbd>
-          <span v-if="it.contador != null" class="contador" :class="it.tono">{{ typeof it.contador === 'number' ? it.contador.toLocaleString('es-AR') : it.contador }}</span>
+          <span v-if="it.contador != null" class="contador" :class="it.tono && `tono-${it.tono}`">{{ typeof it.contador === 'number' ? it.contador.toLocaleString('es-AR') : it.contador }}</span>
         </component>
       </div>
     </nav>
@@ -73,8 +73,8 @@ const atributos = (it) => (!it.ruta ? { type: 'button' } : props.enlace ? { to: 
 .item.on .icono-svg { color: var(--senal); }
 .texto { overflow: hidden; text-overflow: ellipsis; }
 .contador { --c: var(--sub); margin-left: auto; padding: 2px 8px; border-radius: var(--r-sm); background: color-mix(in srgb, var(--c) 16%, transparent); font: 600 .72rem/1.3 var(--ui); color: color-mix(in srgb, var(--c) 80%, var(--txt)); }
-.contador.aviso { --c: var(--aviso); }
-.contador.error { --c: var(--error); }
+.contador.tono-aviso { --c: var(--aviso); }
+.contador.tono-error { --c: var(--error); }
 .colapsada .grupo p, .colapsada .texto, .colapsada .contador { display: none; }
 .colapsada .item { justify-content: center; padding: 10px 0; }
 .pie { margin-top: auto; padding: 12px 4px 0; border-top: 1px solid var(--borde); min-width: 0; }
