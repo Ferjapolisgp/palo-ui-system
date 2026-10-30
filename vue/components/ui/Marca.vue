@@ -30,7 +30,7 @@ const props = defineProps({ producto: { type: String, default: '' }, serie: { ty
 .ico::before { top: -3px; left: -3px; border-right: 0; border-bottom: 0; }
 .ico::after { bottom: -3px; right: -3px; border-left: 0; border-top: 0; }
 .txt { min-width: 0; }
-b { display: block; font-weight: 800; letter-spacing: .16em; font-size: .8rem; }
+b { display: block; font-family: var(--display); font-weight: 800; font-stretch: 125%; letter-spacing: .1em; font-size: .8rem; }
 b span { font-weight: 500; }
 small { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font: 500 .6rem var(--mono); letter-spacing: .08em; color: var(--sub); }
 .grande .ico { width: 48px; height: 48px; }

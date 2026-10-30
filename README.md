@@ -20,7 +20,7 @@ Guía de diseño (principios y decisiones): [`docs/sistema-visual.md`](docs/sist
 | `css/tokens.css` | Variables (`--bg`, `--senal`, `--ok`, `--serie-1`…), tema oscuro y claro, `@font-face` | nada |
 | `css/base.css` | Reset, formularios, botones, `.tag`, `.tabla-simple`, `.titulo-pagina`… | tokens |
 | `css/palo-ui-system.css` | Importa los dos anteriores | — |
-| `fonts/` | Inter y JetBrains Mono (variables, latín), ver `LICENCIAS.md` | — |
+| `fonts/` | Geist, Geist Mono y Archivo (variables, latín), ver `LICENCIAS.md` | — |
 | `vue/components/ui/` | Interfaz: `BarraLateral`, `CabeceraPagina`, `BarraHerramientas`, `Desplegable`, `Paginacion`, `Tarjeta`, `Indicador`, `Aviso`, `Notificaciones`, `Confirmar`, `Vacio`, `Interruptor`, `Avatar`, `Marca`, `Icono`, `BarraUso`, `GrillaCupos`, `CodigoVerificacion`, `ConfigurarMfa`; datos: `DataTable`, `Descriptions`, `Skeleton`, `Spin`, `ProfileCard`, `ActionCard`; formularios: `Field`, `CurrencyInput`, `DatePicker`; capas: `Overlay`, `Modal`, `Drawer`, `Tooltip`, `Popover` | tokens, Vue |
 | `vue/components/graficos/` | `GraficoLinea`, `GraficoBarras`, `GraficoComposicion`, `GraficoRadar`, `GraficoTope` (con leyenda, tooltip y «Ver tabla») | tokens, Vue |
 | `vue/lib/` | `tema.js`, `notificaciones.js` (`notificar()`), `graficos.js` (escalas y formatos es-AR), `iconos.js`, `formato.js`, `mfa.js`; `fechas.js` (fechas ISO sin hora: `interpretarFecha`, `formatoFecha`…), `montos.js` (`interpretarMonto`), `floating.js` (`useFloating`: menús y ayudas al `<body>`, sin recortes) y `focus.js` (`useFocusTrap`: foco atrapado y scroll bloqueado en capas apiladas) | — |

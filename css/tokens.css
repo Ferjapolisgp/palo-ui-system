@@ -1,6 +1,8 @@
-/* Fuentes en fonts/ (variables, solo latino: cubre el español) */
-@font-face { font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("../fonts/inter-latin-wght.woff2") format("woff2"); }
-@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 100 800; font-display: swap; src: url("../fonts/jetbrains-mono-latin-wght.woff2") format("woff2"); }
+/* Fuentes en fonts/ (variables, solo latino: cubre el español). Geist para la interfaz, Geist Mono para
+   códigos y etiquetas, Archivo (con eje de ancho) solo para las calcas: logo y títulos estampados. */
+@font-face { font-family: "Geist"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("../fonts/geist-latin-wght.woff2") format("woff2"); }
+@font-face { font-family: "Geist Mono"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("../fonts/geist-mono-latin-wght.woff2") format("woff2"); }
+@font-face { font-family: "Archivo"; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; src: url("../fonts/archivo-latin-wdth.woff2") format("woff2"); }
 
 /* Tokens del sistema visual (docs/sistema-visual.md). Oscuro es el tema principal; el claro
    sigue la preferencia del sistema o data-theme="light". Los componentes usan solo estos tokens. */
@@ -14,8 +16,9 @@
   --logo-fondo: #2f9e66; --logo-figura: #ffffff; --logo-flor: #c9b2ff;
   /* Series de gráficos: orden fijo, validado para daltonismo contra --bg y --panel. Nunca la señal. */
   --serie-1: #3987e5; --serie-2: #d95926; --serie-3: #199e70; --serie-4: #c98500;
-  --ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --ui: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, Consolas, monospace;
+  --display: "Archivo", "Geist", system-ui, sans-serif;
   --r-sm: 4px; --r-md: 8px; --r-lg: 12px;
   --sombra-1: 0 8px 20px rgba(0, 0, 0, .3); --sombra-2: 0 18px 44px rgba(0, 0, 0, .45); --velo: rgba(0, 0, 0, .55);
   /* Capas (z-index), de abajo hacia arriba. Menús y ayudas arriba de todo: también se abren dentro de un diálogo */
