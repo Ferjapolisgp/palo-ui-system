@@ -27,7 +27,7 @@ Las apps la instalan con `npm install ../palo-ui-system` y `resolve: { dedupe: [
 | Ruta | Qué |
 |---|---|
 | `css/tokens.css` | **Único lugar con valores**: colores (oscuro y claro), series, radios, sombras, capas, fuentes |
-| `css/base.css` | Reset y piezas solo-CSS: `button`, `.primario`, `.peligro`, `.icono`, campos, `.tag`, `.tabla-simple`, `.titulo-pagina`, `.etiqueta-seccion` |
+| `css/base.css` | Reset y piezas solo-CSS: `button`, `.primario`, `.peligro`, `.icono`, campos, `.tag`, `.tabla-simple`, `.titulo-pagina`, `.etiqueta-seccion`, `.encuadre`, `.marco-corte`, `.trama`, `.calca`, `.atajo` |
 | `vue/components/ui/` | Interfaz genérica |
 | `vue/components/graficos/` | Gráficos SVG propios (sin librerías de charts) |
 | `vue/lib/` | Lógica sin interfaz: tema, notificaciones, formatos es-AR, íconos, fechas, montos, foco, flotantes, MFA |
@@ -51,21 +51,22 @@ No se negocian sin un ADR:
 4. **Calma por defecto.** Lo normal es gris (`--txt`, `--sub`, `--tenue`). El color aparece solo para estado, vencimiento, error o dato.
 5. **Lo que vence se marca con la cinta de precaución.** Lo vencido o por vencer que pide acción lleva `Advertencia` (franjas en los extremos y texto con qué pasa y cuándo). No se usa para estados comunes, que van con `.tag`.
 6. **El color nunca es el único aviso.** Toda señal lleva texto, forma o ícono (los avisos tienen forma por tono; los topes escriben su estado).
-7. **Lo identificable se estampa.** Códigos (`TK-1042`), series (`SERIE 01`), etiquetas de sección y cabeceras de tabla van en `--mono`, en mayúsculas y con tracking (`.06em`–`.12em`), con peso de 600 a 800.
+7. **Lo identificable se estampa.** Códigos (`TK-1042`), series (`SERIE 01`), etiquetas de sección, cabeceras de tabla y la cinta de `Advertencia` van en `--mono`, en mayúsculas y con tracking (`.06em`–`.12em`), con peso de 600 a 800. Los estados comunes (`.tag`, `EstadoTag`, contadores) no se estampan: van en `--ui`, peso 600, con el tinte del tono y sin borde, para que lo estampado siga siendo la excepción.
 8. **Densidad de herramienta.** Texto de 13 a 14 px, filas de 40 a 44 px y cifras con `tabular-nums` alineadas a la derecha.
-9. **Líneas, no sombras.** Bordes de 1 px (`--borde`). Las sombras (`--sombra-*`) solo van en lo que flota: menús, diálogos, notificaciones. Para destacar un panel se usa el **marco de corte** (`.marco-corte`): líneas finas que pasan de largo en las esquinas, como en una plancha de calcas. No se usan sombras ni bordes de color. Se reserva para piezas protagonistas (paneles de indicadores, fichas clave) y no se pone en cada tarjeta.
-10. **Formas contenidas.** Radios `--r-sm` 4 px (calcas, etiquetas), `--r-md` 8 px (campos, botones) y `--r-lg` 12 px (paneles). Nada de píldoras gigantes ni de glassmorphism.
-11. **Movimiento mínimo.** Alrededor de 120 ms, solo opacidad, color y desplazamientos cortos, siempre respetando `prefers-reduced-motion`.
+9. **Líneas, no sombras.** Bordes de 1 px (`--borde`). Las sombras (`--sombra-*`) solo van en lo que flota: menús, diálogos, notificaciones. Para destacar un panel se usa el **marco de corte** (`.marco-corte`): líneas finas que pasan de largo en las esquinas, como en una plancha de calcas. No se usan sombras ni bordes de color. Se reserva para piezas protagonistas (paneles de indicadores, fichas clave) y no se pone en cada tarjeta. La única luz permitida es el halo de la señal en un control encendido (la perilla del `Interruptor`).
+10. **Esquinas rectas y encuadre.** `--r-sm`, `--r-md` y `--r-lg` valen 0: todo es rectangular, como una pieza troquelada. El carácter lo dan las **esquinas de encuadre** (`.encuadre`, en «L», con `--encuadre-color`) en la acción principal, el ítem activo, avisos, indicadores y notificaciones, como el visor de una cámara. Nada de píldoras ni de glassmorphism. Los radios siguen siendo tokens: si una herramienta los necesita, se cambian ahí.
+11. **Movimiento mínimo.** Alrededor de 120 ms, solo opacidad, color y desplazamientos cortos, siempre respetando `prefers-reduced-motion`. Solo dos cosas se mueven sin que nadie las toque: la cinta de `Advertencia animada` (para lo que pide acción ya) y la barra de tiempo de una notificación. Ninguna otra animación en loop.
 12. **Marca Cardón.** El logo es el cardón sobre un cuadro verde con esquinas marcadas, «PALO» y el `producto` de cada herramienta. El verde y la flor (`--logo-*`) son solo de marca: no se usan en la interfaz.
 13. **Sin dependencias visuales externas.** Las fuentes están alojadas en `fonts/` (no CDN): **Geist** para la interfaz (`--ui`), **Geist Mono** para códigos, series, etiquetas y cifras a comparar (`--mono`) y **Archivo** ancho solo para las calcas (`--display`, clase `.calca`: logo y títulos estampados, nunca texto corrido ni datos), y no se usan librerías de componentes, de íconos ni de gráficos.
 
 ## 5. Estatutos técnicos
 
 - **Solo tokens.** En un componente no se escriben a mano `#hex`, `rgb()`, sombras ni `z-index`: se usa un token (`--capa-panel`, `--capa-modal`, `--capa-aviso`, `--capa-flotante`). `color-mix()` sobre tokens está permitido para tintes. Si falta un token, se agrega primero en `tokens.css`, para los dos temas.
-- **Tinte de estado:** fondo con el color al 16 %, borde al 40 % y texto al 75–80 % mezclado con `--txt`. Nunca se usan bloques sólidos de color de estado.
+- **Tinte de estado:** fondo con el color al 16 %, borde (si lleva) al 40–45 % y texto al 75–80 % mezclado con `--txt`. Nunca se usan bloques sólidos de color de estado; la única excepción es la placa de `alertar()`.
 - **Producto-neutral.** La librería no conoce a ninguna app: nada de «PaloPay», cuentas, cobros ni tickets en textos por defecto, props o nombres de íconos. Lo propio de cada producto entra por props (`producto`, `serie`, `emisor`, `unidad`…).
 - **Vue 3 `<script setup>`, JavaScript sin TypeScript, sin dependencias en runtime** (Vue es una peerDependency). Las props se documentan en el comentario de cabecera del componente.
 - **Nombres en español,** como la mayoría de la librería (`BarraLateral`, `Desplegable`, `Indicador`). Los componentes nuevos se nombran en español (ver §10 para los que hoy están en inglés).
+- **Clases internas y de tono con prefijo** (`tono-error`, `alerta-titulo`, `toast-txt`): el `scoped` de Vue no protege de las clases globales de una app ni de las utilidades de la hoja base (`.error`, `.aviso`, `.cuerpo`). Nunca un tono como clase suelta.
 - **Comentarios breves en español,** que expliquen el porqué y no repitan el código. Mantener la densidad de comentarios del archivo que se toca.
 - **Accesibilidad mínima:** foco visible (anillo `--senal`), todo operable con teclado, `aria-label` en los botones de solo ícono, Escape cierra lo que flota y el foco queda atrapado en los diálogos (`useFocusTrap`). Los errores se anuncian (`role="alert"`) y se respeta el contraste AA en los dos temas.
 - **Formatos es-AR** desde `vue/lib/graficos.js`, `fechas.js` y `montos.js`. No se formatea a mano en los componentes.
@@ -111,9 +112,8 @@ Un cambio incompatible (renombrar una prop, cambiar un default, renombrar un íc
 
 Lógica de negocio, llamadas a servidores, estado global de las apps y validaciones de dominio. La librería emite eventos y muestra lo que recibe. Por ejemplo, el MFA no genera claves ni valida códigos.
 
-## 10. Deuda conocida (corregir antes de apoyarse en esto)
+## 10. Deuda conocida
 
-- `docs/sistema-visual.md` describe la Ticketera: señal **amarilla**, rutas `web/src/...` y la marca «TICKETERA». La identidad vigente es la de §4 (señal violeta, marca Cardón). Hay que reescribirlo para este repo.
-- `docs/tokens.md` dice que lo genera `scripts/exportar_sistema_visual.mjs`, que no existe en este repo, y muestra valores viejos. Hay que regenerarlo o eliminarlo.
+- `docs/sistema-visual.md` y `docs/tokens.md` describen la Ticketera (señal **amarilla**, rutas `web/src/...`). Desde la 1.0.0 no se publican con el paquete; hay que reescribirlos para este repo. Mientras tanto, la referencia es este archivo y el sitio.
 - `DataTable`, `Descriptions`, `Field`, `CurrencyInput`, `DatePicker`, `Modal`, `Drawer`, `Tooltip`, `Popover`, `Overlay`, `Skeleton` y `Spin` están en inglés, contra la regla de §5. Falta decidir (con un ADR) si se renombran con alias o si se acepta la excepción.
 - No hay pruebas automáticas ni verificación de contraste.
