@@ -83,7 +83,7 @@ onBeforeUnmount(() => document.removeEventListener('keydown', tecla));
         <button type="button" class="icono" :aria-label="modo === 'oscuro' ? 'Pasar a tema claro' : 'Pasar a tema oscuro'" title="Cambiar tema" @click="cambiarModo">
           <Icono :nombre="modo === 'oscuro' ? 'sol' : 'luna'" />
         </button>
-        <span class="tag version">v1.0.0</span>
+        <span class="tag version">v1.1.0</span>
       </div>
     </header>
 

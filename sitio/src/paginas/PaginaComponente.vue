@@ -17,7 +17,7 @@ const demos = computed(() => demosDe(props.id).map((d) => ({ ...d, titulo: c.val
     <p class="lead">{{ c.desc }}</p>
     <p class="origen">Fuente: <code>{{ c.origen }}</code></p>
 
-    <Demo v-for="d in demos" :id="`demo-${d.archivo}`" :key="d.archivo" :titulo="d.titulo" :descripcion="d.descripcion" :componente="d.componente" :fuente="d.fuente" />
+    <Demo v-for="d in demos" :id="`demo-${d.archivo}`" :key="d.archivo" :titulo="d.titulo" :descripcion="d.descripcion" :componente="d.componente" :fuente="d.fuente" :ancha="c.demoAncha" />
 
     <section v-if="c.props">
       <h2 id="props">{{ c.tituloProps || 'Props' }}</h2>

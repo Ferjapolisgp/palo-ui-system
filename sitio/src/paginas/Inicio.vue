@@ -7,7 +7,7 @@ import { COMPONENTES } from '../datos/componentes.js';
 
 const copiado = ref(false);
 async function copiar() {
-  try { await navigator.clipboard.writeText('npm install github:Ferjapolisgp/palo-ui-system#v1.0.0'); copiado.value = true; setTimeout(() => { copiado.value = false; }, 1600); } catch { /* el comando queda visible para copiarlo a mano */ }
+  try { await navigator.clipboard.writeText('npm install github:Ferjapolisgp/palo-ui-system#v1.1.0'); copiado.value = true; setTimeout(() => { copiado.value = false; }, 1600); } catch { /* el comando queda visible para copiarlo a mano */ }
 }
 const cantidad = Object.keys(COMPONENTES).length;
 </script>
@@ -15,13 +15,13 @@ const cantidad = Object.keys(COMPONENTES).length;
 <template>
   <article class="doc">
     <section class="hero">
-      <p class="etiqueta-seccion">Serie 01 · Sistema visual · v1.0.0</p>
+      <p class="etiqueta-seccion">Serie 01 · Sistema visual · v1.1.0</p>
       <div class="titulo"><Marca solo-icono grande class="logo" /><h1 class="calca">Palo UI</h1></div>
       <p class="lead">El sistema visual de las herramientas internas de Palo (Pay, Docs, Onboarding, la Ticketera): tokens, estilos y componentes Vue 3 para armar backoffices claros, en oscuro y en claro, sin escribir un color a mano.</p>
       <div class="acciones">
         <RouterLink to="/instalacion" class="boton primario">Empezar</RouterLink>
         <RouterLink to="/componentes/boton" class="boton">Ver componentes</RouterLink>
-        <span class="instalar"><code>npm install github:Ferjapolisgp/palo-ui-system#v1.0.0</code><button type="button" @click="copiar">{{ copiado ? 'Copiado' : 'Copiar' }}</button></span>
+        <span class="instalar"><code>npm install github:Ferjapolisgp/palo-ui-system#v1.1.0</code><button type="button" @click="copiar">{{ copiado ? 'Copiado' : 'Copiar' }}</button></span>
       </div>
     </section>
 

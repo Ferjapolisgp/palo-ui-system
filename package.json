@@ -1,6 +1,6 @@
 {
   "name": "palo-ui-system",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Sistema visual «marcado técnico» reutilizable: tokens, estilos base y componentes Vue 3.",
   "private": true,
   "type": "module",

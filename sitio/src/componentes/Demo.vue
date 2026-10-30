@@ -4,8 +4,8 @@ import { Icono } from 'palo-ui-system';
 import Codigo from './Codigo.vue';
 
 // Una demo: título y explicación arriba; el componente vivo a la izquierda y su código a la derecha.
-// Cuando no hay ancho, el código pasa abajo y se abre a pedido.
-const props = defineProps({ id: String, titulo: String, descripcion: String, componente: Object, fuente: String });
+// Cuando no hay ancho, o la demo pide todo el ancho (`ancha`: tableros, tablas), el código pasa abajo y se abre a pedido.
+const props = defineProps({ id: String, titulo: String, descripcion: String, componente: Object, fuente: String, ancha: Boolean });
 const verCodigo = ref(false);
 const copiado = ref('');
 async function copiar() {
@@ -21,7 +21,7 @@ async function copiar() {
       <h2 :id="id">{{ titulo }}</h2>
       <p>{{ descripcion }}</p>
     </div>
-    <div class="marco" :class="{ 'con-codigo': verCodigo }">
+    <div class="marco" :class="{ 'con-codigo': verCodigo, ancha }">
       <div class="vista"><component :is="componente" /></div>
       <div class="codigo">
         <div class="barra">
@@ -49,7 +49,13 @@ async function copiar() {
 .alternar { display: none !important; }
 .fuente { flex: 1; margin: 0; max-height: 560px; padding: 16px 18px; overflow: auto; font: 500 .8rem/1.7 var(--mono); }
 
-/* Sin ancho para dos columnas: el código abajo, plegado. */
+/* Sin ancho para dos columnas, o demo ancha: el código abajo, plegado. */
+.marco.ancha { grid-template-columns: minmax(0, 1fr); }
+.ancha .vista { border-radius: 0; }
+.ancha .codigo { border-left: 0; border-top: 1px solid var(--borde); border-radius: 0 0 var(--r-lg) var(--r-lg); }
+.ancha .alternar { display: inline-flex !important; }
+.marco.ancha:not(.con-codigo) .fuente { display: none; }
+.marco.ancha:not(.con-codigo) .barra { border-bottom: 0; }
 @container (max-width: 760px) {
   .marco { grid-template-columns: minmax(0, 1fr); }
   .vista { border-radius: 0; }

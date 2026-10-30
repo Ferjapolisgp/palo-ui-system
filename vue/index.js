@@ -23,6 +23,7 @@ export { default as GrillaCupos } from './components/ui/GrillaCupos.vue';
 export { default as Icono } from './components/ui/Icono.vue';
 export { default as Indicador } from './components/ui/Indicador.vue';
 export { default as Interruptor } from './components/ui/Interruptor.vue';
+export { default as Kanban } from './components/ui/Kanban.vue';
 export { default as Marca } from './components/ui/Marca.vue';
 export { default as Modal } from './components/ui/Modal.vue';
 export { default as Notificaciones } from './components/ui/Notificaciones.vue';

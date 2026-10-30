@@ -2,6 +2,10 @@
 
 Formato: lo que cambia para las apps que usan la librería. **Rompe** marca lo que obliga a ajustar código o revisar pantallas.
 
+## 1.1.0 · 2026-10-30
+
+- `Kanban`: tablero de columnas con tarjetas que se arrastran. Reglas por `puedeSoltar` (con motivo escrito), límite por columna, orden dentro de la columna, solo lectura y movimiento completo con teclado. Arrastre nativo, sin dependencias: en pantallas táctiles se mueve con teclado.
+
 ## 1.0.0 · 2026-10-30
 
 Primera versión estable de Palo UI: el sistema visual de la Ticketera pasa a ser una librería común para Ticketera, Palo Docs, Palo Onboarding y PaloPay.
