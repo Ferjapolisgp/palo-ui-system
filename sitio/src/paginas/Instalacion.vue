@@ -10,8 +10,9 @@ import Codigo from '../componentes/Codigo.vue';
 
     <section>
       <h2 id="instalar">1. Instalar</h2>
-      <Codigo suelto codigo="npm install ../palo-ui-system
-// o en package.json: &quot;palo-ui-system&quot;: &quot;file:../palo-ui-system&quot;" />
+      <Codigo suelto codigo="npm install github:Ferjapolisgp/palo-ui-system#v1.0.0
+// mientras se desarrolla la librería, desde una carpeta hermana:
+npm install ../palo-ui-system" />
       <p class="sub">Si la app y la librería están en carpetas hermanas, agregá <code>resolve: { dedupe: ['vue'] }</code> en la configuración de Vite para que usen el mismo Vue.</p>
     </section>
 

@@ -7,7 +7,7 @@ import { COMPONENTES } from '../datos/componentes.js';
 
 const copiado = ref(false);
 async function copiar() {
-  try { await navigator.clipboard.writeText('npm install ../palo-ui-system'); copiado.value = true; setTimeout(() => { copiado.value = false; }, 1600); } catch { /* el comando queda visible para copiarlo a mano */ }
+  try { await navigator.clipboard.writeText('npm install github:Ferjapolisgp/palo-ui-system#v1.0.0'); copiado.value = true; setTimeout(() => { copiado.value = false; }, 1600); } catch { /* el comando queda visible para copiarlo a mano */ }
 }
 const cantidad = Object.keys(COMPONENTES).length;
 </script>
@@ -21,7 +21,7 @@ const cantidad = Object.keys(COMPONENTES).length;
       <div class="acciones">
         <RouterLink to="/instalacion" class="boton primario">Empezar</RouterLink>
         <RouterLink to="/componentes/boton" class="boton">Ver componentes</RouterLink>
-        <span class="instalar"><code>npm install ../palo-ui-system</code><button type="button" @click="copiar">{{ copiado ? 'Copiado' : 'Copiar' }}</button></span>
+        <span class="instalar"><code>npm install github:Ferjapolisgp/palo-ui-system#v1.0.0</code><button type="button" @click="copiar">{{ copiado ? 'Copiado' : 'Copiar' }}</button></span>
       </div>
     </section>
 
@@ -56,7 +56,8 @@ const cantidad = Object.keys(COMPONENTES).length;
 .boton:hover { border-color: var(--txt); }
 .boton.primario { background: var(--senal); border-color: var(--senal); color: var(--senal-txt); font-weight: 700; }
 .instalar { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 6px 0 12px; border: 1px solid var(--borde); border-radius: var(--r-md); background: var(--panel); }
-.instalar code { padding: 0; border: 0; background: none; }
+.instalar { max-width: 100%; }
+.instalar code { min-width: 0; padding: 0; border: 0; background: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .instalar button { height: 28px; padding: 0 8px; font-size: .72rem; font-weight: 600; }
 .vitrina-marco { margin: 22px; }
 .rasgos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding: 22px; }
