@@ -4,7 +4,9 @@ Sistema visual de las herramientas internas de Palo (Pay, Docs, Onboarding, la T
 
 **Versión estable: 1.0.0** · cambios en [`CHANGELOG.md`](CHANGELOG.md).
 
-**Documentación:** el sitio en [`sitio/`](sitio/) consume la librería tal como lo haría cualquier app, con demos vivas, código y API de cada componente:
+**Documentación en línea: https://ferjapolisgp.github.io/palo-ui-system/** (se publica sola con cada push a `main`).
+
+**Sitio en local:** el sitio en [`sitio/`](sitio/) consume la librería tal como lo haría cualquier app, con demos vivas, código y API de cada componente:
 
 ```bash
 cd sitio
@@ -49,8 +51,6 @@ npm install github:Ferjapolisgp/palo-ui-system#v1.0.0
 # O desde una carpeta hermana, mientras se desarrolla la librería
 npm install ../palo-ui-system       # o: "palo-ui-system": "file:../palo-ui-system"
 ```
-
-El repositorio es privado: para instalar desde GitHub, la máquina (o el CI) necesita acceso de lectura al repo.
 
 ```js
 import 'palo-ui-system/css';

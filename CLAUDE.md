@@ -20,7 +20,9 @@ npm run dev      # http://localhost:5173
 npm run build    # sitio/dist; si compila, la librería compila
 ```
 
-Las apps la instalan con `npm install ../palo-ui-system` y `resolve: { dedupe: ['vue'] }` en Vite.
+Las apps la instalan con `npm install github:Ferjapolisgp/palo-ui-system#v1.0.0` (o `../palo-ui-system` en desarrollo) y `resolve: { dedupe: ['vue'] }` en Vite.
+
+El sitio se publica en https://ferjapolisgp.github.io/palo-ui-system/ con cada push a `main` (`.github/workflows/sitio.yml`): si no compila en Actions, no se publica.
 
 ## 3. Mapa
 
