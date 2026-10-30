@@ -2,6 +2,8 @@
 
 Sistema visual de las herramientas internas de Palo (Pay, Docs, Onboarding, la Ticketera y las que vengan): tokens, estilos base y componentes Vue 3 (interfaz y gráficos). Parte de la identidad «marcado técnico» de la Ticketera, con la marca **Cardón**: fondos grafito, violeta como señal y el cardón verde como logo. **Este repo es el origen de verdad**: los cambios de tokens y componentes se hacen aquí.
 
+**Versión estable: 1.0.0** · cambios en [`CHANGELOG.md`](CHANGELOG.md).
+
 **Documentación:** el sitio en [`sitio/`](sitio/) consume la librería tal como lo haría cualquier app, con demos vivas, código y API de cada componente:
 
 ```bash
@@ -41,8 +43,14 @@ Los `url()` de las fuentes son relativos a `css/`, así que la carpeta `fonts/` 
 **Vue 3 con Vite/Astro:**
 
 ```bash
+# Desde GitHub, fijada a una versión (recomendado)
+npm install github:Ferjapolisgp/palo-ui-system#v1.0.0
+
+# O desde una carpeta hermana, mientras se desarrolla la librería
 npm install ../palo-ui-system       # o: "palo-ui-system": "file:../palo-ui-system"
 ```
+
+El repositorio es privado: para instalar desde GitHub, la máquina (o el CI) necesita acceso de lectura al repo.
 
 ```js
 import 'palo-ui-system/css';
