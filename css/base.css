@@ -8,14 +8,36 @@ input, select, textarea { padding: 8px 10px; border: 1px solid var(--borde-fuert
 select { appearance: none; padding-right: 28px; background-image: linear-gradient(45deg, transparent 50%, var(--sub) 50%), linear-gradient(135deg, var(--sub) 50%, transparent 50%); background-position: calc(100% - 15px) 55%, calc(100% - 10px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
 select option { background: var(--panel); color: var(--txt); }
 textarea { resize: vertical; min-height: 70px; }
-button { cursor: pointer; padding: 7px 14px; border-radius: var(--r-md); border: 1px solid var(--borde-fuerte); background: var(--panel); }
-button:hover { border-color: var(--txt); }
-button.primario { background: var(--senal); color: var(--senal-txt); border-color: var(--senal); font-weight: 700; }
-button.primario:hover { filter: brightness(1.06); }
+input[type="checkbox"], input[type="radio"] { width: 16px; height: 16px; padding: 0; margin: 0; accent-color: var(--senal); cursor: pointer; flex: none; }
+button { cursor: pointer; padding: 7px 14px; border-radius: var(--r-md); border: 1px solid var(--borde); background: color-mix(in srgb, var(--txt) 3%, transparent); color: var(--sub); font-weight: 400; transition: background .12s, color .12s, border-color .12s; }
+button:hover { border-color: var(--borde-fuerte); background: color-mix(in srgb, var(--txt) 7%, transparent); color: var(--txt); }
+/* Acción principal: tinte de la señal y esquinas de encuadre, como el visor de una cámara */
+button.primario { --esq: 7px; position: relative; border-radius: 0; background: color-mix(in srgb, var(--senal) 14%, var(--panel)); color: var(--txt); border-color: color-mix(in srgb, var(--senal) 40%, transparent); font-weight: 500; }
+button.primario::after { content: ""; position: absolute; inset: -1px; pointer-events: none;
+  --l: linear-gradient(var(--senal), var(--senal));
+  background: var(--l) left top / var(--esq) 1px no-repeat, var(--l) left top / 1px var(--esq) no-repeat,
+    var(--l) right top / var(--esq) 1px no-repeat, var(--l) right top / 1px var(--esq) no-repeat,
+    var(--l) left bottom / var(--esq) 1px no-repeat, var(--l) left bottom / 1px var(--esq) no-repeat,
+    var(--l) right bottom / var(--esq) 1px no-repeat, var(--l) right bottom / 1px var(--esq) no-repeat; }
+button.primario:hover { background: color-mix(in srgb, var(--senal) 22%, var(--panel)); border-color: color-mix(in srgb, var(--senal) 55%, transparent); }
+/* Encuadre: esquinas en «L» pegadas al borde de cualquier pieza (tarjetas, avisos, paneles, diálogos). Quien lo usa
+   tiene que estar posicionado (relative o el que traiga). Color con --encuadre-color. */
+.encuadre::after { content: ""; position: absolute; inset: 0; pointer-events: none; --esq: 8px; --l: linear-gradient(var(--encuadre-color, var(--sub)), var(--encuadre-color, var(--sub)));
+  background: var(--l) left top / var(--esq) var(--esp, 1px) no-repeat, var(--l) left top / var(--esp, 1px) var(--esq) no-repeat,
+    var(--l) right top / var(--esq) var(--esp, 1px) no-repeat, var(--l) right top / var(--esp, 1px) var(--esq) no-repeat,
+    var(--l) left bottom / var(--esq) var(--esp, 1px) no-repeat, var(--l) left bottom / var(--esp, 1px) var(--esq) no-repeat,
+    var(--l) right bottom / var(--esq) var(--esp, 1px) no-repeat, var(--l) right bottom / var(--esp, 1px) var(--esq) no-repeat; }
+/* Atajo de teclado dentro de un botón o ítem: ⌘ N */
+.atajo { margin-left: auto; padding: 1px 6px; border-radius: var(--r-sm); background: color-mix(in srgb, var(--txt) 8%, transparent); font: 600 .66rem var(--mono); letter-spacing: .04em; color: var(--sub); }
 button.peligro { color: var(--error); }
 button:disabled { opacity: .5; cursor: default; }
+button:disabled:hover { border-color: var(--borde); }
+/* Botón de un solo ícono: siempre con aria-label y title */
+button.icono { display: inline-grid; place-items: center; width: 32px; height: 32px; padding: 0; color: var(--sub); }
+button.icono:hover { color: var(--txt); }
 label { display: block; font-size: .8rem; font-weight: 600; color: var(--sub); margin: 0 0 4px; }
-.error { color: var(--error); margin: 8px 0; }
+.error { color: var(--error); }
+p.error { margin: 8px 0; }
 .sub { color: var(--sub); }
 .pill { display: inline-block; padding: 1px 8px; border-radius: 99px; font-size: .75rem; font-weight: 600; color: #fff; }
 .vencido { color: var(--error); font-weight: 600; }
@@ -28,10 +50,10 @@ label { display: block; font-size: .8rem; font-weight: 600; color: var(--sub); m
 @media (max-width: 860px) { .app-con-nav { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); } }
 
 /* Etiqueta rectangular de una palabra (resultados, banderas); el color sale de --c o de la variante */
-.tag { --c: var(--tenue); display: inline-flex; align-items: center; padding: 1px 8px; border: 1.5px solid var(--c); border-radius: var(--r-sm); font: 700 .66rem var(--mono); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; color: color-mix(in srgb, var(--c) 70%, var(--txt)); }
+.tag { --c: var(--tenue); display: inline-flex; align-items: center; padding: 2px 8px; border: 0; border-radius: var(--r-sm); background: color-mix(in srgb, var(--c) 16%, transparent); font: 600 .72rem/1.3 var(--ui); white-space: nowrap; color: color-mix(in srgb, var(--c) 80%, var(--txt)); }
 .tag.ok { --c: var(--ok); } .tag.error { --c: var(--error); } .tag.aviso { --c: var(--aviso); } .tag.info { --c: var(--info); }
 /* Tabla de pantallas de administración */
-.tabla-simple { overflow-x: auto; background: var(--panel); border: 1px solid var(--borde); border-radius: var(--r-lg); }
+.tabla-simple { position: relative; overflow-x: auto; background: var(--panel); border: 1px solid var(--borde); border-radius: var(--r-lg); }
 .tabla-simple table { width: 100%; border-collapse: collapse; }
 .tabla-simple th, .tabla-simple td { text-align: left; padding: 0 12px; height: 44px; border-bottom: 1px solid var(--borde); }
 .tabla-simple th { height: 34px; font: 600 .66rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--sub); }
@@ -39,3 +61,25 @@ label { display: block; font-size: .8rem; font-weight: 600; color: var(--sub); m
 .tabla-simple tbody tr:hover { background: var(--panel-2); }
 .titulo-pagina { margin: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; }
 .etiqueta-seccion { margin: 0; font: 600 .66rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--sub); }
+
+/* Marco de corte: líneas finas alrededor de una pieza que pasan de largo en las esquinas, como las marcas
+   de corte de una plancha de calcas. Va en el elemento de afuera: si un ancestro tiene overflow: hidden,
+   lo recorta. Entre piezas vecinas, un gap de al menos 2 × --corte-sep; las líneas pueden cruzarse. */
+.marco-corte { --l: linear-gradient(var(--corte-color), var(--corte-color)); position: relative; }
+.marco-corte::before { content: ""; position: absolute; inset: calc(-1 * (var(--corte-sep) + var(--corte-ext))); pointer-events: none;
+  background: var(--l) left 0 top var(--corte-ext) / 100% 1px no-repeat, var(--l) left 0 bottom var(--corte-ext) / 100% 1px no-repeat,
+    var(--l) left var(--corte-ext) top 0 / 1px 100% no-repeat, var(--l) right var(--corte-ext) top 0 / 1px 100% no-repeat; }
+/* Solo las cruces de las esquinas: para filas densas o piezas chicas */
+.marco-corte.esquinas::before { --t: calc(2 * var(--corte-ext));
+  background: var(--l) left 0 top var(--corte-ext) / var(--t) 1px no-repeat, var(--l) right 0 top var(--corte-ext) / var(--t) 1px no-repeat,
+    var(--l) left 0 bottom var(--corte-ext) / var(--t) 1px no-repeat, var(--l) right 0 bottom var(--corte-ext) / var(--t) 1px no-repeat,
+    var(--l) left var(--corte-ext) top 0 / 1px var(--t) no-repeat, var(--l) right var(--corte-ext) top 0 / 1px var(--t) no-repeat,
+    var(--l) left var(--corte-ext) bottom 0 / 1px var(--t) no-repeat, var(--l) right var(--corte-ext) bottom 0 / 1px var(--t) no-repeat; }
+
+/* Trama: rayas verticales grises para el resto de un total (otros, sin dato, capacidad libre). Lee como «no es
+   un dato principal» sin gastar un color de serie. Siempre con su nombre escrito al lado. */
+.trama { background: var(--trama); }
+
+/* Calca: mayúsculas anchas y pesadas, como las letras de una plancha de calcas. Solo para marcas y títulos
+   estampados (portadas, ingreso, vacíos grandes), nunca para texto corrido ni para datos. */
+.calca { font-family: var(--display); font-weight: 800; font-stretch: 125%; text-transform: uppercase; letter-spacing: .02em; line-height: 1; }

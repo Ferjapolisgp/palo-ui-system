@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
+import Overlay from './Overlay.vue';
 
 // Reasignar el ticket a otra persona. Si ya tenía responsable se pide el motivo: queda como comentario del ticket.
 const props = defineProps({
@@ -22,7 +23,7 @@ function enviar() {
 </script>
 
 <template>
-  <div class="velo" @click.self="emit('cancelar')" @keydown.esc="emit('cancelar')">
+  <Overlay abierto @cerrar="emit('cancelar')">
     <form class="caja" role="dialog" aria-modal="true" :aria-label="titulo" @submit.prevent="enviar">
       <h3>{{ titulo }}</h3>
       <label for="re-dest">Pasa a</label>
@@ -38,12 +39,11 @@ function enviar() {
         <button class="primario" :disabled="!valido">Reasignar</button>
       </div>
     </form>
-  </div>
+  </Overlay>
 </template>
 
 <style scoped>
-.velo { position: fixed; inset: 0; background: rgba(0, 0, 0, .55); display: grid; place-items: center; z-index: 100; padding: 16px; }
-.caja { display: grid; gap: 6px; background: var(--panel); border: 1px solid var(--borde-fuerte); border-radius: var(--r-lg); padding: 20px; width: 100%; max-width: 440px; box-shadow: 0 20px 48px rgba(0, 0, 0, .45); }
+.caja { display: grid; gap: 6px; background: var(--panel); border: 1px solid var(--borde-fuerte); border-radius: var(--r-lg); padding: 20px; width: 100%; max-width: 440px; box-shadow: var(--sombra-2); }
 h3 { margin: 0 0 6px; font-size: 1rem; }
 .ayuda { margin: 0; font-size: .78rem; color: var(--sub); }
 .acciones { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
