@@ -8,7 +8,7 @@ const emit = defineEmits(['confirmar', 'cancelar']);
 
 <template>
   <Overlay abierto @cerrar="emit('cancelar')">
-    <div class="caja" role="alertdialog" aria-modal="true" :aria-label="titulo">
+    <div class="caja encuadre" role="alertdialog" aria-modal="true" :aria-label="titulo">
       <h3>{{ titulo }}</h3>
       <p v-if="texto">{{ texto }}</p>
       <div class="acciones">
@@ -20,7 +20,7 @@ const emit = defineEmits(['confirmar', 'cancelar']);
 </template>
 
 <style scoped>
-.caja { background: var(--panel); border: 1px solid var(--borde-fuerte); border-radius: var(--r-lg); padding: 20px; width: 100%; max-width: 420px; box-shadow: var(--sombra-2); }
+.caja { position: relative; background: var(--panel); border: 1px solid var(--borde-fuerte); border-radius: var(--r-lg); padding: 20px; width: 100%; max-width: 420px; box-shadow: var(--sombra-2); }
 h3 { margin: 0 0 8px; font-size: 1rem; }
 p { margin: 0; color: var(--sub); }
 .acciones { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }

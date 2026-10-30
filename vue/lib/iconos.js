@@ -1,5 +1,8 @@
 // Trazos de los íconos (24×24, solo líneas). Se dibujan con <Icono nombre="…">, que hereda el color del texto.
 export const ICONOS = {
+  marcador: '<path d="M7 4h10v16l-5-3.5L7 20z"/>',
+  sobre: '<rect x="3" y="5" width="18" height="14"/><path d="M3 7l9 7 9-7"/>',
+  usuario: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/>',
   usuarios: '<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16.5 14.2c2.6.4 4.5 2.7 4.5 5.8"/>',
   tarjeta: '<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/>',
   revisado: '<path d="M3 12.5l4 4 8-8M10 16.5l1 1 9-9"/>',

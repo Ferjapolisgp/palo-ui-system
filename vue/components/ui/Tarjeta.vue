@@ -5,7 +5,7 @@ import Skeleton from './Skeleton.vue';
 // Un <dl> en el cuerpo se dibuja como lista de datos (término a la izquierda, valor a la derecha).
 // Con `interactiva` toda la tarjeta se puede tocar: el título es el botón (lo que lee un lector de pantalla y lo que
 // recibe el foco) y se estira sobre la tarjeta; los botones de las acciones siguen funcionando por separado.
-// El `tono` es solo un acento: el estado siempre va además escrito (una etiqueta en `extra`).
+// El `tono` es solo un acento (esquinas de color más grandes): el estado siempre va además escrito (una etiqueta en `extra`).
 defineProps({
   titulo: String,
   subtitulo: String,
@@ -20,7 +20,7 @@ const emit = defineEmits(['abrir']);
 </script>
 
 <template>
-  <section class="tarjeta" :class="[variante, tono && `tono-${tono}`, { interactiva, seleccionada, compacta }]" :aria-busy="cargando || undefined">
+  <section class="tarjeta encuadre" :class="[variante, tono && `tono-${tono}`, { interactiva, seleccionada, compacta }]" :aria-busy="cargando || undefined">
     <div v-if="$slots.media && !cargando" class="media"><slot name="media" /></div>
     <header v-if="titulo || $slots.extra">
       <div class="titulos">
@@ -43,7 +43,8 @@ const emit = defineEmits(['abrir']);
 .tarjeta { position: relative; background: var(--panel); border: 1px solid var(--borde); border-radius: var(--r-lg); min-width: 0; overflow: hidden; }
 .plana { background: var(--panel-2); border-color: transparent; }
 .elevada { border-color: var(--borde); box-shadow: var(--sombra-1); }
-.tono-ok, .tono-aviso, .tono-error, .tono-info { border-left: 3px solid var(--acento-tono); }
+/* El tono pinta las esquinas de encuadre, las agranda y tiñe el borde */
+.tono-ok, .tono-aviso, .tono-error, .tono-info { --encuadre-color: var(--acento-tono); --esq: 22px; --esp: 2px; border-color: color-mix(in srgb, var(--acento-tono) 45%, transparent); }
 .tono-ok { --acento-tono: var(--ok); }
 .tono-aviso { --acento-tono: var(--aviso); }
 .tono-error { --acento-tono: var(--error); }
@@ -65,7 +66,7 @@ footer { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; pa
 
 /* Interactiva: el título se estira sobre toda la tarjeta; lo demás clicable va por encima. */
 .interactiva { transition: border-color .15s, box-shadow .15s; }
-.interactiva:hover { border-color: var(--borde-fuerte); }
+.interactiva:not([class*="tono-"]):hover { border-color: var(--borde-fuerte); }
 .interactiva:has(.titulo-boton:focus-visible) { outline: 2px solid var(--senal); outline-offset: 2px; }
 .titulo-boton { padding: 0; border: 0; background: none; text-align: left; cursor: pointer; }
 .titulo-boton:hover { border: 0; }

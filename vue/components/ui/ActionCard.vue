@@ -22,7 +22,7 @@ const atributos = computed(() => (props.to && props.enlace ? { to: props.to } : 
 </script>
 
 <template>
-  <component :is="etiqueta" v-bind="atributos" class="accion" :class="{ deshabilitada: disabled }" @click="emit('abrir')">
+  <component :is="etiqueta" v-bind="atributos" class="accion encuadre" :class="{ deshabilitada: disabled }" @click="emit('abrir')">
     <span v-if="icono" class="icono-caja" aria-hidden="true"><Icono :nombre="icono" :tam="20" /></span>
     <span class="textos"><b>{{ titulo }}</b><small v-if="texto">{{ texto }}</small></span>
     <span v-if="contador !== undefined && contador !== null" class="contador" :class="tono"><span class="oculto">Pendientes: </span>{{ contador }}</span>
@@ -31,7 +31,7 @@ const atributos = computed(() => (props.to && props.enlace ? { to: props.to } : 
 </template>
 
 <style scoped>
-.accion { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 16px; border: 1px solid var(--borde); border-radius: var(--r-lg); background: var(--panel); color: var(--txt); text-align: left; text-decoration: none; cursor: pointer; transition: border-color .15s, background .15s; }
+.accion { position: relative; display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 16px; border: 1px solid var(--borde); border-radius: var(--r-lg); background: var(--panel); color: var(--txt); text-align: left; text-decoration: none; cursor: pointer; transition: border-color .15s, background .15s; }
 .accion:hover { border-color: var(--borde-fuerte); background: var(--panel-2); }
 .accion:hover .flecha { transform: translateX(2px); color: var(--txt); }
 .icono-caja { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border: 1px solid var(--borde-fuerte); border-radius: var(--r-md); background: var(--panel-2); color: var(--senal); }

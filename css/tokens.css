@@ -19,7 +19,7 @@
   --ui: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "Geist Mono", ui-monospace, Consolas, monospace;
   --display: "Archivo", "Geist", system-ui, sans-serif;
-  --r-sm: 4px; --r-md: 8px; --r-lg: 12px;
+  --r-sm: 0; --r-md: 0; --r-lg: 0;
   --sombra-1: 0 8px 20px rgba(0, 0, 0, .3); --sombra-2: 0 18px 44px rgba(0, 0, 0, .45); --velo: rgba(0, 0, 0, .55);
   /* Capas (z-index), de abajo hacia arriba. Menús y ayudas arriba de todo: también se abren dentro de un diálogo */
   --capa-panel: 80; --capa-modal: 100; --capa-aviso: 110; --capa-flotante: 120;

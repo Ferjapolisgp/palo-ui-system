@@ -34,7 +34,7 @@ onBeforeUnmount(() => { document.removeEventListener('click', fuera); document.r
       <svg viewBox="0 0 8 8" aria-hidden="true"><path :d="abierto ? 'M1 5.5 4 2.5l3 3' : 'M1 2.5l3 3 3-3'" /></svg>
     </button>
     <Teleport to="body">
-    <ul v-if="abierto" ref="menu" class="menu" role="listbox" :style="estilo">
+    <ul v-if="abierto" ref="menu" class="menu encuadre" role="listbox" :style="estilo">
       <li v-for="o in opciones" :key="o.valor">
         <button type="button" role="option" :aria-selected="o === actual" :class="{ on: o === actual }" @click="elegir(o)">
           <span><span v-if="o.prefijo" class="pre">{{ o.prefijo }}</span>{{ o.texto }}</span>

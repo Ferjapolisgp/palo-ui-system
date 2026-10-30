@@ -115,7 +115,7 @@ const detalle = computed(() => {
 </script>
 
 <template>
-  <div class="indicador" :class="[tono, `forma-${forma}`]">
+  <div class="indicador encuadre" :class="[tono, `forma-${forma}`]">
     <p class="et">{{ etiqueta }}</p>
     <strong aria-live="polite">{{ mostrado }}</strong>
     <small v-if="detalle" :class="{ punto: hover != null }">{{ detalle }}</small>
@@ -167,7 +167,7 @@ const detalle = computed(() => {
 </template>
 
 <style scoped>
-.indicador { --c: var(--sub); --pad-x: 14px; --pad-y: 12px; display: flex; flex-direction: column; gap: 4px; padding: var(--pad-y) var(--pad-x); background: var(--panel); border: 1px solid var(--borde); border-radius: var(--r-lg); min-width: 0; overflow: hidden; }
+.indicador { position: relative; --c: var(--sub); --pad-x: 14px; --pad-y: 12px; display: flex; flex-direction: column; gap: 4px; padding: var(--pad-y) var(--pad-x); background: var(--panel); border: 1px solid var(--borde); border-radius: var(--r-lg); min-width: 0; overflow: hidden; }
 .indicador.ok { --c: var(--ok); } .indicador.aviso { --c: var(--aviso); } .indicador.error { --c: var(--error); }
 .et { margin: 0; font: 600 .66rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--sub); }
 strong { font: 700 1.35rem var(--mono); letter-spacing: -.01em; font-variant-numeric: tabular-nums; }

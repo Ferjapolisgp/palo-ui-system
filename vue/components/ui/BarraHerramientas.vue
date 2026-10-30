@@ -26,11 +26,14 @@ const emit = defineEmits(['update:busqueda', 'quitar-seleccion']);
 </template>
 
 <style scoped>
-.barra { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-height: 56px; padding: 12px 20px; border-bottom: 1px solid var(--borde); }
+.barra { display: flex; flex-wrap: nowrap; gap: 8px; align-items: center; min-height: 56px; padding: 12px 20px; border-bottom: 1px solid var(--borde); }
 .barra.sel { background: color-mix(in srgb, var(--senal) 10%, var(--bg)); border-bottom-color: color-mix(in srgb, var(--senal) 45%, var(--borde)); }
 .sel b { margin-right: 4px; font: 700 .78rem var(--mono); letter-spacing: .04em; }
 .barra :slotted(button:not(.icono)), .barra > button { height: 32px; padding: 0 12px; }
-.busca { position: relative; flex: 1 1 180px; max-width: 280px; }
+/* La búsqueda absorbe los cambios de ancho de los filtros: se achica antes de que algo salte de línea */
+.busca { position: relative; flex: 1 1 180px; min-width: 120px; max-width: 280px; }
+.barra :slotted(*) { flex: none; }
+@media (max-width: 640px) { .barra { flex-wrap: wrap; } .busca { flex-basis: 100%; max-width: none; } }
 .busca .icono-svg { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--sub); pointer-events: none; }
 .busca input { height: 32px; padding: 0 10px 0 32px; }
 .relleno { flex: 1; }

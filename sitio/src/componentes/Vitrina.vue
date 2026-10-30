@@ -46,7 +46,7 @@ function asignar() {
   <div class="vitrina" :class="{ colapsada }">
     <BarraLateral v-model:colapsada="colapsada" producto="Tickets" serie="Soporte" :grupos="navegacionApp" :activo="activo" class="lat" @navegar="(it) => (activo = it.valor)">
       <template #pie="{ colapsada: c }">
-        <div class="persona"><Avatar nombre="Ana Ruiz" :tam="28" /><div v-if="!c"><b>Ana Ruiz</b><small>Soporte · turno mañana</small></div></div>
+        <div class="persona"><Avatar nombre="Ana Ruiz" :tam="c ? 44 : 28" /><div v-if="!c"><b>Ana Ruiz</b><small>Soporte · turno mañana</small></div></div>
       </template>
     </BarraLateral>
     <div class="principal">

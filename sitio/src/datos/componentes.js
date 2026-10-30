@@ -22,9 +22,9 @@ export const COMPONENTES = {
   },
   avatar: {
     titulo: 'Avatar', grupo: 'Base', origen: 'vue/components/ui/Avatar.vue',
-    desc: 'Iniciales de una persona en un círculo. Sin persona asignada se muestra punteado con «?».',
+    desc: 'Iniciales de una persona en un cuadrado; en tamaño chico (hasta 24 px) solo la primera letra. Sin persona asignada (incógnito) se muestra punteado con el ícono de usuario.',
     demos: { '01-tamanos': ['Tamaños y vacío', 'El tamaño va en píxeles; la letra escala sola.'] },
-    props: [['nombre', 'String', '—', 'Nombre completo; se toman dos iniciales.'], ['tam', 'Number', '22', 'Diámetro en píxeles.']],
+    props: [['nombre', 'String', '—', 'Nombre completo; se toman dos iniciales (una sola si tam ≤ 24). Sin nombre, ícono de usuario.'], ['tam', 'Number', '22', 'Lado en píxeles.']],
   },
   logo: {
     titulo: 'Logo', grupo: 'Base', origen: 'vue/components/ui/Marca.vue',
@@ -124,11 +124,12 @@ export const COMPONENTES = {
   },
   'profile-card': {
     titulo: 'ProfileCard', grupo: 'Datos', origen: 'vue/components/ui/ProfileCard.vue',
-    desc: 'Tarjeta de una persona: avatar, nombre, rol, estado y datos de contacto. Se arma sobre Tarjeta, así acepta sus mismas props y eventos (interactiva, seleccionada, cargando…).',
-    demos: { '01-equipo': ['Equipo de soporte', 'En grilla; los datos de contacto son enlaces y la tarjeta cargando muestra esqueletos.'] },
-    props: [['nombre', 'String', '—', 'Obligatorio. De ahí salen las iniciales del avatar.'], ['rol', 'String', '—', 'Cargo o área, debajo del nombre.'], ['estado', 'Object', '—', '{ texto, tono }: etiqueta junto al nombre.'],
-      ['contactos', 'Array', '[]', '{ icono, texto, href? }. Con href es un enlace (mailto:, tel:).'], ['tam', 'Number', '48', 'Diámetro del avatar.']],
-    slots: [['default', 'Reemplaza la lista de contactos.'], ['acciones', 'Botones al pie.']],
+    desc: 'Ficha de una persona: portada, nombre con verificación, descripción, cifras en fila y una acción al pie. Se arma sobre Tarjeta, así acepta sus mismas props y eventos (tono, interactiva, seleccionada, cargando…).',
+    demos: { '01-equipo': ['Equipo de soporte', 'En grilla, con cifras, acción principal al pie y botón de guardar sobre la portada; la tarjeta cargando muestra esqueletos.'] },
+    props: [['nombre', 'String', '—', 'Obligatorio. Sin imagen, de ahí salen las iniciales de la portada.'], ['rol', 'String', '—', 'Cargo o área, en mono bajo el nombre.'], ['descripcion', 'String', '—', 'Frase corta sobre la persona.'],
+      ['imagen', 'String', '—', 'URL de la portada. Sin ella se muestran las iniciales.'], ['verificado', 'Boolean', 'false', 'Marca de verificación junto al nombre.'], ['estado', 'Object', '—', '{ texto, tono }: etiqueta junto al nombre.'],
+      ['datos', 'Array', '[]', '{ valor, etiqueta, icono? }: cifras en fila, separadas por líneas.'], ['contactos', 'Array', '[]', '{ icono, texto, href? }. Con href es un enlace (mailto:, tel:).']],
+    slots: [['default', 'Reemplaza la lista de contactos.'], ['media-accion', 'Botón de ícono sobre la esquina de la portada (guardar, más…).'], ['acciones', 'Botones al pie; ocupan todo el ancho.']],
   },
   'action-card': {
     titulo: 'ActionCard', grupo: 'Datos', origen: 'vue/components/ui/ActionCard.vue',

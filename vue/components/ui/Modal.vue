@@ -22,7 +22,7 @@ function cerrar() {
 
 <template>
   <Overlay :abierto="abierto" :cerrar-afuera="cerrable" :cerrar-con-escape="cerrable" @cerrar="cerrar">
-    <section class="caja" :class="ancho" tabindex="-1" role="dialog" aria-modal="true" :aria-labelledby="`${id}-t`">
+    <section class="caja encuadre" :class="ancho" tabindex="-1" role="dialog" aria-modal="true" :aria-labelledby="`${id}-t`">
       <header>
         <div class="titulos">
           <h2 :id="`${id}-t`">{{ titulo }}</h2>
@@ -37,7 +37,7 @@ function cerrar() {
 </template>
 
 <style scoped>
-.caja { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; width: 100%; max-height: calc(100dvh - 32px); background: var(--panel); border: 1px solid var(--borde-fuerte); border-radius: var(--r-lg); box-shadow: var(--sombra-2); }
+.caja { position: relative; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; width: 100%; max-height: calc(100dvh - 32px); background: var(--panel); border: 1px solid var(--borde-fuerte); border-radius: var(--r-lg); box-shadow: var(--sombra-2); }
 .caja:focus { outline: none; }
 .chico { max-width: 400px; }
 .medio { max-width: 560px; }

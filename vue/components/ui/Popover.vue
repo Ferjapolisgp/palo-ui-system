@@ -57,7 +57,7 @@ onBeforeUnmount(() => { document.removeEventListener('click', fuera); document.r
   <span ref="ancla" class="ancla" @click="alternar">
     <slot :abierto="abierto" />
     <Teleport to="body">
-      <div v-if="abierto" :id="id" ref="panel" class="panel" role="dialog" :aria-label="titulo" tabindex="-1" :style="estilo" @focusout="alSalir">
+      <div v-if="abierto" :id="id" ref="panel" class="panel encuadre" role="dialog" :aria-label="titulo" tabindex="-1" :style="estilo" @focusout="alSalir">
         <p v-if="titulo" class="popover-titulo">{{ titulo }}</p>
         <slot name="contenido" :cerrar="cerrar" />
       </div>

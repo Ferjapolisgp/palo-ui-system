@@ -48,7 +48,7 @@ function enviar() {
 
 <template>
   <component :is="enLinea ? 'div' : Overlay" v-bind="enLinea ? {} : { abierto: true }" @cerrar="emit('cancelar')">
-    <form class="caja" :class="{ flotante: !enLinea }" :tabindex="enLinea ? undefined : -1" :role="enLinea ? undefined : 'dialog'" :aria-modal="enLinea ? undefined : 'true'"
+    <form class="caja encuadre" :class="{ flotante: !enLinea }" :tabindex="enLinea ? undefined : -1" :role="enLinea ? undefined : 'dialog'" :aria-modal="enLinea ? undefined : 'true'"
           :aria-labelledby="`${id}-t`" @submit.prevent="enviar">
       <header>
         <h3 :id="`${id}-t`">{{ titulo }}</h3>
@@ -58,7 +58,7 @@ function enviar() {
       <section>
         <h4><Icono nombre="escanear" :tam="20" />Escanear el código QR</h4>
         <p class="sub">Escaneá el código con tu app de autenticación (Google Authenticator, Authy u otra) o cargá la clave a mano.</p>
-        <div class="panel-qr">
+        <div class="panel-qr encuadre">
           <div class="qr">
             <span class="esq"></span><span class="esq"></span><span class="esq"></span><span class="esq"></span>
             <slot name="qr"><img v-if="qr" :src="qr" alt="Código QR para la app de autenticación" width="140" height="140"></slot>
@@ -88,7 +88,7 @@ function enviar() {
 </template>
 
 <style scoped>
-.caja { display: grid; gap: 22px; width: 100%; max-width: 480px; padding: 22px; background: var(--panel); border: 1px solid var(--borde-fuerte); border-radius: var(--r-lg); }
+.caja { position: relative; display: grid; gap: 22px; width: 100%; max-width: 480px; padding: 22px; background: var(--panel); border: 1px solid var(--borde-fuerte); border-radius: var(--r-lg); }
 .caja.flotante { box-shadow: var(--sombra-2); }
 .caja:focus { outline: none; }
 header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
@@ -97,7 +97,7 @@ section { display: grid; gap: 10px; }
 h4 { display: flex; align-items: center; gap: 10px; margin: 0; font-size: .98rem; }
 h4 .icono-svg { color: var(--sub); }
 section > .sub { margin: 0; font-size: .88rem; }
-.panel-qr { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; padding: 16px; background: var(--bg); border: 1px solid var(--borde); border-radius: var(--r-lg); }
+.panel-qr { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 18px; padding: 16px; background: var(--bg); border: 1px solid var(--borde); border-radius: var(--r-lg); }
 .qr { position: relative; flex: none; display: grid; place-items: center; width: 164px; height: 164px; }
 .qr img, .qr :slotted(img), .qr :slotted(svg) { display: block; width: 140px; height: 140px; border-radius: var(--r-sm); }
 .esq { position: absolute; width: 18px; height: 18px; border: 2px solid var(--sub); }
