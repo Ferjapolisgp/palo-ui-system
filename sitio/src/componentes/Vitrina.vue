@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue';
-import { Avatar, BarraHerramientas, BarraLateral, CabeceraPagina, DataTable, Descriptions, Desplegable, Drawer, Indicador, Paginacion, notificar } from 'palo-ui-system';
-import { estadosSolicitud, fechaLarga, navegacionApp, solicitudes, ultimos14, vencidas14 } from '../datos/ejemplo.js';
+import { Advertencia, Avatar, BarraHerramientas, BarraLateral, CabeceraPagina, DataTable, Descriptions, Desplegable, Drawer, Indicador, Paginacion, notificar } from 'palo-ui-system';
+import { canalesHoy, estadosSolicitud, fechaLarga, navegacionApp, resueltas14, solicitudes, ultimos14 } from '../datos/ejemplo.js';
 
 // Una pantalla real armada solo con piezas de la librería: la bandeja de la Ticketera.
 const colapsada = ref(false);
@@ -34,6 +34,7 @@ const ficha = computed(() => actual.value && [
   { termino: 'Abierta hace', valor: `${actual.value.horas} h` },
 ]);
 const dias = ultimos14.map((d) => fechaLarga(d.fecha));
+const PLAZO = 48; // ejemplo: horas para responder cualquier solicitud
 const visibles = computed(() => solicitudes.filter((s) => (!estado.value || s.tono === estado.value) && (s.codigo + s.asunto + s.solicitante).toLowerCase().includes(busqueda.value.toLowerCase())));
 function asignar() {
   notificar({ titulo: `${seleccion.value.length} ${seleccion.value.length === 1 ? 'solicitud asignada' : 'solicitudes asignadas'} a Ana Ruiz`, detalle: 'Datos de ejemplo: no se asignó nada.' });
@@ -59,13 +60,19 @@ function asignar() {
       </BarraHerramientas>
       <div class="cuerpo-app">
         <div class="kpis">
+          <!-- Una forma de indicador por pregunta: tendencia, volumen por día, composición y tope. -->
           <Indicador etiqueta="Ingresadas hoy" :valor="ultimos14.at(-1).cantidad" variacion="▲ 8 % contra ayer" :tendencia="ultimos14.map((d) => d.cantidad)" :etiquetas-tendencia="dias" />
-          <Indicador etiqueta="Vencidas" valor="9" variacion="▼ 6 en dos semanas" tono="ok" :tendencia="vencidas14" :etiquetas-tendencia="dias" />
-          <Indicador etiqueta="Primera respuesta" valor="2 h 40 min" variacion="▲ 25 min sobre el objetivo" tono="aviso" />
+          <Indicador etiqueta="Resueltas por día" :valor="resueltas14.at(-1)" variacion="▼ 7 contra ayer" forma="barras" :tendencia="resueltas14" :etiquetas-tendencia="dias" />
+          <Indicador etiqueta="Canal de ingreso" valor="45 % web" variacion="▲ 2 puntos contra ayer" tono="ok" forma="composicion" grafico="solido" :partes="canalesHoy" />
+          <Indicador etiqueta="Carga del equipo" valor="94 asignadas" variacion="▲ 12 desde la mañana" tono="aviso" forma="tope" :usado="94" :limite="128" />
         </div>
         <DataTable v-model:seleccion="seleccion" v-model:orden="orden" :columnas="COLUMNAS" :filas="visibles" titulo="Bandeja de solicitudes" clave-fila="codigo"
                    seleccionable orden-local fila-clicable @fila="abrir">
-          <template #celda-estado="{ fila }"><span class="tag" :class="fila.tono">{{ fila.estado }}</span></template>
+          <template #celda-estado="{ fila }">
+            <Advertencia v-if="fila.tono === 'error'">Vencida hace {{ fila.horas - PLAZO }} h</Advertencia>
+            <Advertencia v-else-if="fila.tono === 'aviso'" tono="aviso">Vence en {{ PLAZO - fila.horas }} h</Advertencia>
+            <span v-else class="tag" :class="fila.tono">{{ fila.estado }}</span>
+          </template>
         </DataTable>
         <Paginacion v-model:pagina="pagina" :total="1284" :por-pagina="5" unidad="solicitudes" />
       </div>
@@ -83,7 +90,8 @@ function asignar() {
 .vitrina { display: grid; grid-template-columns: auto minmax(0, 1fr); overflow: hidden; background: var(--bg); border: 1px solid var(--borde); border-radius: var(--r-lg); }
 .principal { min-width: 0; }
 .cuerpo-app { display: grid; gap: 14px; padding: 16px 20px 18px; }
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.kpis > * { min-height: 136px; }
 .persona { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .persona b { display: block; font-size: .82rem; }
 .persona small { display: block; color: var(--sub); font-size: .72rem; white-space: nowrap; }

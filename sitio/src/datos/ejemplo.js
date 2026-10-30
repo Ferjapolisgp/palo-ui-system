@@ -62,6 +62,9 @@ export const espacios = [
 export const ultimos14 = ingresos.slice(-14);
 export const vencidas14 = [15, 14, 14, 13, 13, 12, 12, 11, 11, 10, 10, 10, 9, 9];
 export const altas14 = [6, 9, 4, 7, 11, 8, 3, 5, 10, 7, 6, 9, 8, 7];
+export const resueltas14 = [38, 44, 41, 12, 9, 47, 52, 49, 45, 14, 10, 51, 55, 48];
+// Canal de ingreso de hoy; «Otros» (teléfono y presencial) es el resto y va en trama.
+export const canalesHoy = [{ nombre: 'Web', valor: 45 }, { nombre: 'Mail', valor: 25 }, { nombre: 'WhatsApp', valor: 24 }, { nombre: 'Otros', valor: 6, resto: true }];
 
 export const navegacionApp = [
   { titulo: 'Trabajo', items: [

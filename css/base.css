@@ -48,3 +48,25 @@ label { display: block; font-size: .8rem; font-weight: 600; color: var(--sub); m
 /* Calca: mayúsculas anchas y pesadas, como las letras de una plancha de calcas. Solo para marcas y títulos
    estampados (portadas, ingreso, vacíos grandes), nunca para texto corrido ni para datos. */
 .calca { font-family: var(--display); font-weight: 800; font-stretch: 125%; text-transform: uppercase; letter-spacing: .02em; line-height: 1; }
+
+/* Marco de corte: líneas finas alrededor de una pieza que pasan de largo en las esquinas, como las marcas
+   de corte de una plancha de calcas. Va en el elemento de afuera: si un ancestro tiene overflow: hidden,
+   lo recorta. Entre piezas vecinas, un gap de al menos 2 × --corte-sep; las líneas pueden cruzarse. */
+.marco-corte { --l: linear-gradient(var(--corte-color), var(--corte-color)); position: relative; }
+.marco-corte::before { content: ""; position: absolute; inset: calc(-1 * (var(--corte-sep) + var(--corte-ext))); pointer-events: none;
+  background: var(--l) left 0 top var(--corte-ext) / 100% 1px no-repeat, var(--l) left 0 bottom var(--corte-ext) / 100% 1px no-repeat,
+    var(--l) left var(--corte-ext) top 0 / 1px 100% no-repeat, var(--l) right var(--corte-ext) top 0 / 1px 100% no-repeat; }
+/* Solo las cruces de las esquinas: para filas densas o piezas chicas */
+.marco-corte.esquinas::before { --t: calc(2 * var(--corte-ext));
+  background: var(--l) left 0 top var(--corte-ext) / var(--t) 1px no-repeat, var(--l) right 0 top var(--corte-ext) / var(--t) 1px no-repeat,
+    var(--l) left 0 bottom var(--corte-ext) / var(--t) 1px no-repeat, var(--l) right 0 bottom var(--corte-ext) / var(--t) 1px no-repeat,
+    var(--l) left var(--corte-ext) top 0 / 1px var(--t) no-repeat, var(--l) right var(--corte-ext) top 0 / 1px var(--t) no-repeat,
+    var(--l) left var(--corte-ext) bottom 0 / 1px var(--t) no-repeat, var(--l) right var(--corte-ext) bottom 0 / 1px var(--t) no-repeat; }
+
+/* Trama: rayas verticales grises para el resto de un total (otros, sin dato, capacidad libre). Lee como «no es
+   un dato principal» sin gastar un color de serie. Siempre con su nombre escrito al lado. */
+.trama { background: var(--trama); }
+
+/* Calca: mayúsculas anchas y pesadas, como las letras de una plancha de calcas. Solo para marcas y títulos
+   estampados (portadas, ingreso, vacíos grandes), nunca para texto corrido ni para datos. */
+.calca { font-family: var(--display); font-weight: 800; font-stretch: 125%; text-transform: uppercase; letter-spacing: .02em; line-height: 1; }

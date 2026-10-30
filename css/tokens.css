@@ -23,6 +23,10 @@
   --sombra-1: 0 8px 20px rgba(0, 0, 0, .3); --sombra-2: 0 18px 44px rgba(0, 0, 0, .45); --velo: rgba(0, 0, 0, .55);
   /* Capas (z-index), de abajo hacia arriba. Menús y ayudas arriba de todo: también se abren dentro de un diálogo */
   --capa-panel: 80; --capa-modal: 100; --capa-aviso: 110; --capa-flotante: 120;
+  /* Marco de corte (.marco-corte): separación de la pieza y cuánto pasan de largo las líneas en las esquinas */
+  --corte-color: var(--borde-fuerte); --corte-sep: 8px; --corte-ext: 14px;
+  /* Trama (.trama): rayas verticales para «el resto» de un total (otros, sin dato, disponible). Nunca un dato principal */
+  --trama-color: var(--tenue); --trama: repeating-linear-gradient(90deg, var(--trama-color) 0 2px, transparent 2px 5px);
   /* nombres anteriores: siguen funcionando hasta que cada pantalla migre a los nuevos */
   --card: var(--panel); --col: var(--panel-2); --acento: var(--senal); --acento-txt: var(--senal-txt);
   --err: var(--error); --warn: var(--aviso);

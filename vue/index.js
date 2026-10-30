@@ -1,6 +1,7 @@
 // Punto de entrada de los componentes Vue 3. Requiere css/palo-ui-system.css cargado en la página.
 
 // Interfaz genérica
+export { default as Advertencia } from './components/ui/Advertencia.vue';
 export { default as ActionCard } from './components/ui/ActionCard.vue';
 export { default as Aviso } from './components/ui/Aviso.vue';
 export { default as Avatar } from './components/ui/Avatar.vue';

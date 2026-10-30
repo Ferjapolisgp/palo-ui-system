@@ -48,7 +48,7 @@ const PREGUNTAS = [
       <h2 id="reglas">Reglas</h2>
       <div class="regla"><h3>1. Estados con sus colores, series con los suyos</h3><p class="sub">Al día, aviso y error usan <code>--ok</code>, <code>--aviso</code> y <code>--error</code>, siempre con texto. Una serie nunca usa un color de estado ni la señal.</p></div>
       <div class="regla"><h3>2. Un solo eje vertical</h3><p class="sub">Dos medidas de distinta escala van en dos gráficos, nunca en uno con dos ejes.</p></div>
-      <div class="regla"><h3>3. El color sigue a la entidad</h3><p class="sub">«Web» es la serie 1 en todos los gráficos. Si un filtro saca una serie, las demás no cambian de color. Más de 4 partes se agrupan en «Otros».</p></div>
+      <div class="regla"><h3>3. El color sigue a la entidad</h3><p class="sub">«Web» es la serie 1 en todos los gráficos. Si un filtro saca una serie, las demás no cambian de color. Más de 4 partes se agrupan en «Otros», que va en trama gris (prop <code>resto</code>), como todo lo que no es un dato principal.</p></div>
       <div class="regla"><h3>4. Texto en colores de texto</h3><p class="sub">Valores, ejes y leyendas usan <code>--txt</code> y <code>--sub</code>. El color de la serie va en la marca de al lado, no en las letras.</p></div>
       <div class="regla"><h3>5. Siempre con descripción y tabla</h3><p class="sub">La prop <code>descripcion</code> es obligatoria y cada gráfico ofrece «Ver tabla» con los mismos datos.</p></div>
     </section>

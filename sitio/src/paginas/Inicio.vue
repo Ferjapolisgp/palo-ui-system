@@ -15,7 +15,8 @@ const cantidad = Object.keys(COMPONENTES).length;
 <template>
   <article class="doc">
     <section class="hero">
-      <div class="titulo"><Marca solo-icono grande class="logo" /><h1>Palo UI</h1></div>
+      <p class="etiqueta-seccion">Serie 01 · Sistema visual · v0.1.0</p>
+      <div class="titulo"><Marca solo-icono grande class="logo" /><h1 class="calca">Palo UI</h1></div>
       <p class="lead">El sistema visual de las herramientas internas de Palo (Pay, Docs, Onboarding, la Ticketera): tokens, estilos y componentes Vue 3 para armar backoffices claros, en oscuro y en claro, sin escribir un color a mano.</p>
       <div class="acciones">
         <RouterLink to="/instalacion" class="boton primario">Empezar</RouterLink>
@@ -27,15 +28,16 @@ const cantidad = Object.keys(COMPONENTES).length;
     <section>
       <h2 id="vitrina">Vitrina</h2>
       <p class="sub">Una bandeja de solicitudes armada solo con componentes de la librería. Marcá filas, filtrá, colapsá la barra lateral o cambiá de página. Datos de ejemplo.</p>
-      <Vitrina />
+      <!-- La vitrina recorta su contenido: el marco de corte va en un contenedor de afuera. -->
+      <div class="marco-corte vitrina-marco"><Vitrina /></div>
     </section>
 
     <section>
       <h2 id="por-que">Por qué así</h2>
       <div class="rasgos">
-        <div><b>Solo tokens</b><p>Cada color, radio y sombra sale de una variable. Cambiar la marca es cambiar <code>tokens.css</code>, no los componentes.</p></div>
-        <div><b>Oscuro y claro</b><p>Oscuro para la jornada larga, claro cuando hay mucha luz. Los dos temas se mantienen en sincronía.</p></div>
-        <div><b>Hecho para operar</b><p>Códigos estampados, estados con texto y forma, y una sola señal para lo que se puede tocar.</p></div>
+        <div class="marco-corte esquinas"><b>Solo tokens</b><p>Cada color, radio y sombra sale de una variable. Cambiar la marca es cambiar <code>tokens.css</code>, no los componentes.</p></div>
+        <div class="marco-corte esquinas"><b>Oscuro y claro</b><p>Oscuro para la jornada larga, claro cuando hay mucha luz. Los dos temas se mantienen en sincronía.</p></div>
+        <div class="marco-corte esquinas"><b>Hecho para operar</b><p>Códigos estampados, estados con texto y forma, y una sola señal para lo que se puede tocar.</p></div>
       </div>
       <p class="sub">{{ cantidad }} componentes y gráficos documentados, cada uno con demos vivas, código y API.</p>
     </section>
@@ -45,7 +47,7 @@ const cantidad = Object.keys(COMPONENTES).length;
 <style scoped>
 .hero { display: grid; gap: 20px; padding-top: 8px; }
 .titulo { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
-.titulo h1 { font-size: clamp(2.4rem, 6vw, 3.4rem); line-height: 1; letter-spacing: -.035em; }
+.titulo h1 { font-size: clamp(2rem, 5vw, 3rem); }
 .logo { --marco: var(--bg); }
 .logo :deep(.ico) { width: 64px; height: 64px; }
 .hero .lead { font-size: 1.12rem; }
@@ -56,7 +58,8 @@ const cantidad = Object.keys(COMPONENTES).length;
 .instalar { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 6px 0 12px; border: 1px solid var(--borde); border-radius: var(--r-md); background: var(--panel); }
 .instalar code { padding: 0; border: 0; background: none; }
 .instalar button { height: 28px; padding: 0 8px; font-size: .72rem; font-weight: 600; }
-.rasgos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.vitrina-marco { margin: 22px; }
+.rasgos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding: 22px; }
 .rasgos > div { display: grid; gap: 6px; align-content: start; padding: 16px; border: 1px solid var(--borde); border-radius: var(--r-lg); }
 .rasgos p { color: var(--sub); font-size: .86rem; }
 @media (max-width: 860px) { .rasgos { grid-template-columns: minmax(0, 1fr); } }

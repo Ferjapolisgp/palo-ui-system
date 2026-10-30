@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 // Marco común de los gráficos: leyenda arriba, el dibujo en el medio y «Ver tabla» con los mismos datos.
-// leyenda: [{ nombre, color, estilo?: 'linea' | 'rayado' }]. tabla: { columnas: [], filas: [[]] }.
+// leyenda: [{ nombre, color, estilo?: 'linea' | 'rayado' | 'trama' }]. tabla: { columnas: [], filas: [[]] }.
 defineProps({ etiqueta: { type: String, required: true }, leyenda: { type: Array, default: () => [] }, tabla: Object });
 const verTabla = ref(false);
 </script>
@@ -33,6 +33,7 @@ const verTabla = ref(false);
 .leyenda li { display: inline-flex; align-items: center; gap: 7px; }
 .leyenda i { width: 10px; height: 10px; flex: none; border-radius: 2px; background: var(--c); }
 .leyenda i.linea { width: 18px; height: 0; border-top: 2px dashed var(--c); border-radius: 0; background: none; }
+.leyenda i.trama { background: var(--trama); border-radius: 1px; }
 .leyenda i.rayado { width: 12px; height: 12px; background: repeating-linear-gradient(45deg, var(--c) 0 1.5px, transparent 1.5px 4.5px); border: 1.5px solid var(--c); }
 .relleno { flex: 1; }
 .ver { height: 28px; padding: 0 10px; font-size: .76rem; }

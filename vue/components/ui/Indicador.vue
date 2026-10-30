@@ -6,8 +6,8 @@ import { formatoNumero, formatoPorcentaje, posicion } from '../../lib/graficos.j
 // Al pie lleva un gráfico mínimo, a sangre y sin ejes, según `forma`:
 //   linea       curva del período (`tendencia`)
 //   barras      una barra por punto del período (`tendencia`)
-//   composicion de qué se compone el total (`partes`: [{ nombre, valor }], hasta 4)
-//   tope        cuánto se usó de un límite (`usado` y `limite`)
+//   composicion de qué se compone el total (`partes`: [{ nombre, valor, resto? }], hasta 4; `resto` va en trama gris)
+//   tope        cuánto se usó de un límite (`usado` y `limite`); lo libre va en trama
 // `grafico` elige el color: 'degrade' marca del mínimo (tenue) al máximo (serie 1); 'solido' usa colores parejos.
 // Sin tooltip: al pasar el puntero, el número y la variación pasan a ser los del punto o la parte.
 const props = defineProps({
@@ -88,9 +88,10 @@ function mover(e) {
 const comp = computed(() => {
   if (props.forma !== 'composicion' || !props.partes?.length) return null;
   const partes = props.partes.slice(0, 4), total = partes.reduce((s, p) => s + p.valor, 0) || 1;
-  const orden = [...partes].sort((a, b) => b.valor - a.valor);
+  // El resto no entra en el orden del degradé: no es un dato principal.
+  const orden = partes.filter((p) => !p.resto).sort((a, b) => b.valor - a.valor);
   return partes.map((p, i) => ({ ...p, pct: p.valor / total * 100,
-    color: degrade.value ? tinte(1 - orden.indexOf(p) / Math.max(1, partes.length - 1)) : `var(--serie-${i + 1})` }));
+    color: p.resto ? 'var(--trama)' : degrade.value ? tinte(1 - orden.indexOf(p) / Math.max(1, orden.length - 1)) : `var(--serie-${i + 1})` }));
 });
 
 // Tope: aviso desde `avisoDesde`, error al superarlo; el estado siempre escrito.
@@ -197,7 +198,7 @@ small.punto { color: var(--sub); }
 .estado i { width: 8px; height: 8px; border-radius: 50%; background: var(--serie-1); }
 .estado.aviso i { background: var(--aviso); } .estado.error i { background: var(--error); }
 .estado b { margin-left: auto; }
-.riel { --r: var(--serie-1); height: 12px; background: var(--panel-2); }
+.riel { --r: var(--serie-1); height: 12px; background: var(--trama); }
 .riel.aviso { --r: var(--aviso); } .riel.error { --r: var(--error); }
 .riel span { display: block; height: 100%; background: var(--r); }
 .riel.degrade span { background: linear-gradient(90deg, color-mix(in srgb, var(--r) 30%, var(--tenue)), var(--r)); }
