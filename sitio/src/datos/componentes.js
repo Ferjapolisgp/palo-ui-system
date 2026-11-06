@@ -58,6 +58,17 @@ export const COMPONENTES = {
     eventos: [['update:colapsada', 'Se tocó la flecha.'], ['navegar', 'Se tocó un ítem; recibe el ítem.']],
     slots: [['cabecera', 'Reemplaza el logo.'], ['pie', 'Persona, cerrar sesión. Recibe { colapsada }.']],
   },
+  'cuenta-usuario': {
+    titulo: 'Cuenta de usuario', grupo: 'Navegación', origen: 'vue/components/ui/CuentaUsuario.vue',
+    desc: 'La persona que está usando la app, para el pie de la barra lateral: avatar, nombre, detalle y un menú de opciones (perfil, preferencias, cerrar sesión). Es igual en todos los productos; la librería no cierra sesión: avisa y la app decide.',
+    demos: { '01-variantes': ['Variantes y estados', 'Completa, compacta, tarjeta y colapsada; solo identifica, sin identificar y cargando. Abrí el menú con clic, Enter o Espacio y recorrelo con las flechas.'] },
+    props: [['nombre', 'String', '—', 'Nombre de la persona. Sin nombre se muestra el avatar anónimo.'], ['detalle', 'String', '—', 'Segunda línea: rol, correo o área.'], ['imagen', 'String', '—', 'URL de la foto. Sin ella, las iniciales.'],
+      ['variante', 'String', "'completa'", "'completa' (nombre y detalle), 'compacta' (una línea) o 'tarjeta' (enmarcada con encuadre)."], ['colapsada', 'Boolean', 'false', 'Solo el avatar, grande y centrado. Pasale el mismo valor que a la barra lateral.'],
+      ['cargando', 'Boolean', 'false', 'Muestra un esqueleto en lugar de la persona.'], ['opciones', 'Array', '[]', '{ texto, icono?, valor, tono? }. Con opciones es un botón que abre el menú; tono: error para lo destructivo.']],
+    eventos: [['elegir', 'Se eligió una opción del menú; recibe la opción. El menú se cierra y el foco vuelve al botón.']],
+    slots: [['menu', 'Reemplaza la lista de opciones. Recibe { cerrar }.'], ['detalle', 'Reemplaza el texto de detalle.']],
+    extra: { titulo: 'Teclado', columnas: ['Tecla', 'Qué hace'], filas: [['Enter / Espacio', 'Abre el menú y enfoca la primera opción.'], ['↑ ↓', 'Recorre las opciones en círculo.'], ['Inicio / Fin', 'Salta a la primera o a la última.'], ['Escape', 'Cierra el menú y devuelve el foco al botón.'], ['Tab', 'Cierra el menú y sigue el recorrido.']] },
+  },
   cabecera: {
     titulo: 'Cabecera y pestañas', grupo: 'Navegación', origen: 'vue/components/ui/CabeceraPagina.vue',
     desc: 'Título de la pantalla con su serie y las pestañas de vista. Una pestaña que todavía no existe se muestra deshabilitada, no se oculta.',

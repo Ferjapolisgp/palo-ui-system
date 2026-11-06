@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
-import { Advertencia, Avatar, BarraHerramientas, BarraLateral, CabeceraPagina, DataTable, Descriptions, Desplegable, Drawer, Indicador, Paginacion, notificar } from 'palo-ui-system';
+import { Advertencia, BarraHerramientas, BarraLateral, CabeceraPagina, CuentaUsuario, DataTable, Descriptions, Desplegable, Drawer, Indicador, Paginacion, notificar } from 'palo-ui-system';
 import { canalesHoy, estadosSolicitud, fechaLarga, navegacionApp, resueltas14, solicitudes, ultimos14 } from '../datos/ejemplo.js';
 
 // Una pantalla real armada solo con piezas de la librería: la bandeja de la Ticketera.
@@ -46,7 +46,7 @@ function asignar() {
   <div class="vitrina" :class="{ colapsada }">
     <BarraLateral v-model:colapsada="colapsada" producto="Tickets" serie="Soporte" :grupos="navegacionApp" :activo="activo" class="lat" @navegar="(it) => (activo = it.valor)">
       <template #pie="{ colapsada: c }">
-        <div class="persona"><Avatar nombre="Ana Ruiz" :tam="c ? 44 : 28" /><div v-if="!c"><b>Ana Ruiz</b><small>Soporte · turno mañana</small></div></div>
+        <CuentaUsuario nombre="Ana Ruiz" detalle="Soporte · turno mañana" :colapsada="c" :opciones="[{ texto: 'Mi perfil', icono: 'usuario', valor: 'perfil' }, { texto: 'Cerrar sesión', icono: 'salir', valor: 'salir', tono: 'error' }]" />
       </template>
     </BarraLateral>
     <div class="principal">

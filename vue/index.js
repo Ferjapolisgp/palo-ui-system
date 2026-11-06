@@ -17,6 +17,7 @@ export { default as CurrencyInput } from './components/ui/CurrencyInput.vue';
 export { default as DataTable } from './components/ui/DataTable.vue';
 export { default as DatePicker } from './components/ui/DatePicker.vue';
 export { default as Descriptions } from './components/ui/Descriptions.vue';
+export { default as CuentaUsuario } from './components/ui/CuentaUsuario.vue';
 export { default as Desplegable } from './components/ui/Desplegable.vue';
 export { default as Field } from './components/ui/Field.vue';
 export { default as GrillaCupos } from './components/ui/GrillaCupos.vue';
