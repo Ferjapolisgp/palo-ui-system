@@ -174,6 +174,15 @@ export const COMPONENTES = {
       ['navegable', 'Boolean', 'false', 'Los pasos hechos son botones que emiten elegir.'], ['etiqueta', 'String', "'Pasos'", 'aria-label de la lista.']],
     eventos: [['elegir', 'Se tocó un paso hecho (con navegable); recibe el paso.']],
   },
+  historial: {
+    titulo: 'Historial', grupo: 'Datos', origen: 'vue/components/ui/Historial.vue',
+    desc: 'Registro de eventos de una pieza (cambios de estado, versiones, firmas, movimientos): qué pasó, quién y cuándo. Una columna con línea vertical; cada tono lleva su ícono. No consulta nada: la app pasa los eventos.',
+    demos: { '01-movimientos': ['Movimientos', 'Agrupado por día o corrido, con tonos, códigos en mono, cargando, vacío y «Ver más».'] },
+    props: [['eventos', 'Array', '[]', '{ id, titulo, texto?, fecha, autor?, codigo?, tono?, icono? }. fecha: AAAA-MM-DD o AAAA-MM-DDTHH:mm.'], ['orden', 'String', "'reciente'", "'reciente' o 'antiguo'."], ['agrupar', 'Boolean', 'false', 'Un título por día, con la fecha larga en es-AR.'],
+      ['cargando', 'Boolean', 'false', 'Esqueleto en lugar de la lista.'], ['hayMas', 'Boolean', 'false', 'Muestra «Ver más movimientos».'], ['etiqueta', 'String', "'Historial'", 'aria-label de la sección.']],
+    eventos: [['mas', 'Se tocó «Ver más movimientos»; la app trae y suma los siguientes.']],
+    slots: [['evento', 'Reemplaza el contenido de cada fila. Recibe { evento }.']],
+  },
   'action-card': {
     titulo: 'ActionCard', grupo: 'Datos', origen: 'vue/components/ui/ActionCard.vue',
     desc: 'Atajo grande a algo que se hace seguido: ícono, título, explicación y un número de pendientes. Es un solo elemento clicable: un enlace con href, un enlace de router con to, o un botón.',
