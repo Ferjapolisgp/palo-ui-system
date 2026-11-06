@@ -191,6 +191,14 @@ export const COMPONENTES = {
       ['multiple', 'Boolean', 'true', 'Permite más de un archivo.'], ['deshabilitado', 'Boolean', 'false', 'Bloquea elegir y soltar.'], ['etiqueta', 'String', "'Adjuntos'", 'aria-label de la sección.']],
     eventos: [['agregar', 'Archivos que pasaron el filtro: File[].'], ['rechazado', '{ archivo, motivo }: no cumplía tipo o tamaño. El motivo también se muestra y se anuncia.'], ['quitar', 'Se quitó un archivo (botón ✕ o Suprimir en la fila); recibe el archivo.'], ['reintentar', 'Se tocó «Reintentar» en un archivo con error.']],
   },
+  'paleta-comandos': {
+    titulo: 'Paleta de comandos', grupo: 'Capas', origen: 'vue/components/ui/PaletaComandos.vue',
+    desc: 'Buscador global de acciones y destinos (⌘ K). Muestra lo que recibe: no conoce rutas ni acciones. El atajo global lo registra la app; la paleta solo maneja el teclado mientras está abierta.',
+    demos: { '01-basica': ['Acciones y pantallas', 'Filtra sin distinguir acentos ni mayúsculas, agrupa y muestra los atajos. Probá escribir «descargar» o «configuracion».'] },
+    props: [['abierta', 'Boolean', 'false', 'v-model:abierta.'], ['comandos', 'Array', '[]', '{ valor, texto, grupo?, icono?, atajo?, palabras? }. palabras suma términos que también buscan.'], ['placeholder', 'String', "'Buscá una acción o una pantalla'", 'Texto del campo y su aria-label.'], ['etiqueta', 'String', "'Paleta de comandos'", 'aria-label del diálogo.']],
+    eventos: [['ejecutar', 'Se eligió un comando; recibe el comando y la paleta se cierra.'], ['update:abierta', 'Se cerró (Escape, clic afuera o al ejecutar).']],
+    extra: { titulo: 'Teclado', columnas: ['Tecla', 'Qué hace'], filas: [['Escribir', 'Filtra los comandos.'], ['↑ ↓', 'Recorre los resultados en círculo.'], ['Inicio / Fin', 'Salta al primero o al último.'], ['Enter', 'Ejecuta el comando resaltado.'], ['Escape', 'Cierra y devuelve el foco a lo que la abrió.']] },
+  },
   'action-card': {
     titulo: 'ActionCard', grupo: 'Datos', origen: 'vue/components/ui/ActionCard.vue',
     desc: 'Atajo grande a algo que se hace seguido: ícono, título, explicación y un número de pendientes. Es un solo elemento clicable: un enlace con href, un enlace de router con to, o un botón.',

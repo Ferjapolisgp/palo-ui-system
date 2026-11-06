@@ -16,7 +16,7 @@ export const NAVEGACION = [
     ['Formularios', ['field', 'currency-input', 'date-picker', 'adjuntos'].map(comp)],
   ['Filtros', ['barra-herramientas', 'desplegable', 'interruptor'].map(comp)],
     ['Respuesta', ['aviso', 'advertencia', 'notificacion', 'confirmar', 'vacio'].map(comp)],
-  ['Capas', ['modal', 'drawer', 'tooltip', 'popover', 'overlay'].map(comp)],
+  ['Capas', ['modal', 'drawer', 'tooltip', 'popover', 'overlay', 'paleta-comandos'].map(comp)],
     ['Seguridad', ['codigo-verificacion', 'mfa'].map(comp)],
   ] },
   { seccion: 'Gráficos', clave: 'graficos', grupos: [
