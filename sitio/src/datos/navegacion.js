@@ -11,7 +11,7 @@ export const NAVEGACION = [
   ] },
   { seccion: 'Componentes', clave: 'componentes', grupos: [
     ['Base', ['boton', 'campo', 'etiqueta', 'avatar', 'logo', 'icono', 'marco-corte'].map(comp)],
-    ['Navegación', ['barra-lateral', 'cuenta-usuario', 'cabecera', 'paginacion'].map(comp)],
+    ['Navegación', ['barra-lateral', 'cuenta-usuario', 'cabecera', 'pie-pagina', 'paginacion'].map(comp)],
     ['Datos', ['tabla', 'data-table', 'descriptions', 'tarjeta', 'profile-card', 'action-card', 'kanban', 'indicador', 'barra-uso', 'grilla-cupos', 'skeleton'].map(comp)],
     ['Formularios', ['field', 'currency-input', 'date-picker'].map(comp)],
   ['Filtros', ['barra-herramientas', 'desplegable', 'interruptor'].map(comp)],

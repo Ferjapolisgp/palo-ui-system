@@ -58,6 +58,19 @@ export const COMPONENTES = {
     eventos: [['update:colapsada', 'Se tocó la flecha.'], ['navegar', 'Se tocó un ítem; recibe el ítem.']],
     slots: [['cabecera', 'Reemplaza el logo.'], ['pie', 'Persona, cerrar sesión. Recibe { colapsada }.']],
   },
+  'pie-pagina': {
+    titulo: 'Pie de página', grupo: 'Navegación', origen: 'vue/components/ui/PiePagina.vue',
+    desc: 'Pie de la app o de una vista con tres tipos de elemento bajo un mismo estándar: cifras (kpi), datos fijos y enlaces. Todos llevan una etiqueta chica en mono y el contenido, separados por líneas, en dos grupos: inicio y fin.',
+    demos: { '01-tipos': ['Kpis, datos y enlaces', 'Cifras con tono (siempre con ícono), un dato copiable, un enlace externo y un botón que emite «abrir».'] },
+    props: [['inicio', 'Array', '[]', 'Elementos del grupo de la izquierda.'], ['fin', 'Array', '[]', 'Elementos del grupo de la derecha.'], ['fijo', 'Boolean', 'false', 'Lo pega abajo de la ventana (sticky).'],
+      ['enlace', 'Component', '—', 'RouterLink u otro: los enlaces cuyo href empieza con «/» lo usan con :to.'], ['etiqueta', 'String', "'Pie'", 'aria-label del pie.']],
+    eventos: [['abrir', 'Se tocó un enlace sin href; recibe el elemento.'], ['copiar', 'Se copió un dato copiable; recibe el elemento.']],
+    slots: [['inicio', 'Contenido propio al final del grupo de inicio.'], ['fin', 'Contenido propio al final del grupo de fin.']],
+    extra: { titulo: 'Tipos de elemento', columnas: ['tipo', 'Campos', 'Mecánica'], filas: [
+      ['kpi', 'etiqueta, valor, unidad?, tono?', 'Cifra tabular en negrita. El tono (ok, aviso, error, info) agrega un ícono: el color nunca va solo.'],
+      ['dato', 'etiqueta, valor, copiable?', 'Texto fijo en mono (versión, entorno, ID). Con copiable es un botón que lo copia y lo anuncia.'],
+      ['enlace', 'texto, href?, externo?', 'Con href es un enlace (target _blank si es externo); sin href es un botón que emite «abrir».']] },
+  },
   'cuenta-usuario': {
     titulo: 'Cuenta de usuario', grupo: 'Navegación', origen: 'vue/components/ui/CuentaUsuario.vue',
     desc: 'La persona que está usando la app, para el pie de la barra lateral: avatar, nombre, detalle y un menú de opciones (perfil, preferencias, cerrar sesión). Es igual en todos los productos; la librería no cierra sesión: avisa y la app decide.',
