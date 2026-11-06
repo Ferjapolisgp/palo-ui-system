@@ -157,6 +157,15 @@ export const COMPONENTES = {
       ['datos', 'Array', '[]', '{ valor, etiqueta, icono? }: cifras en fila, separadas por líneas.'], ['contactos', 'Array', '[]', '{ icono, texto, href? }. Con href es un enlace (mailto:, tel:).']],
     slots: [['default', 'Reemplaza la lista de contactos.'], ['media-accion', 'Botón de ícono sobre la esquina de la portada (guardar, más…).'], ['acciones', 'Botones al pie; ocupan todo el ancho.']],
   },
+  pestanas: {
+    titulo: 'Pestañas', grupo: 'Navegación', origen: 'vue/components/ui/Pestanas.vue',
+    desc: 'Cambia entre paneles de una misma ficha. No carga contenido ni toca la ruta: la app decide qué mostrar. Con un slot por pestaña dibuja también el panel activo.',
+    demos: { '01-ficha': ['Ficha con paneles', 'Con contadores, una pestaña deshabilitada y un slot por panel. Recorrelas con las flechas.'] },
+    props: [['modelValue', 'String', '—', 'v-model: el valor de la pestaña activa. Sin él, la primera habilitada.'], ['items', 'Array', '[]', '{ valor, texto, contador?, deshabilitada? }'], ['etiqueta', 'String', "'Secciones'", 'aria-label de la lista de pestañas.']],
+    eventos: [['update:modelValue', 'Se eligió una pestaña; recibe su valor.']],
+    slots: [['<valor>', 'Un slot por pestaña con su nombre (#resumen, #archivos…): el panel de la pestaña activa.']],
+    extra: { titulo: 'Teclado', columnas: ['Tecla', 'Qué hace'], filas: [['← →', 'Pasa a la pestaña anterior o siguiente (en círculo, sin las deshabilitadas) y la activa.'], ['Inicio / Fin', 'Va a la primera o a la última.'], ['Tab', 'Entra al panel activo: solo la pestaña activa está en el recorrido.']] },
+  },
   'action-card': {
     titulo: 'ActionCard', grupo: 'Datos', origen: 'vue/components/ui/ActionCard.vue',
     desc: 'Atajo grande a algo que se hace seguido: ícono, título, explicación y un número de pendientes. Es un solo elemento clicable: un enlace con href, un enlace de router con to, o un botón.',
