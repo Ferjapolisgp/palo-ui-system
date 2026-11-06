@@ -31,6 +31,7 @@ export { default as Notificaciones } from './components/ui/Notificaciones.vue';
 export { default as Overlay } from './components/ui/Overlay.vue';
 export { default as PiePagina } from './components/ui/PiePagina.vue';
 export { default as Pestanas } from './components/ui/Pestanas.vue';
+export { default as Pasos } from './components/ui/Pasos.vue';
 export { default as Paginacion } from './components/ui/Paginacion.vue';
 export { default as Popover } from './components/ui/Popover.vue';
 export { default as Skeleton } from './components/ui/Skeleton.vue';

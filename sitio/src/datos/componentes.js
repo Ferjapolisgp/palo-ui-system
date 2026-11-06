@@ -166,6 +166,14 @@ export const COMPONENTES = {
     slots: [['<valor>', 'Un slot por pestaña con su nombre (#resumen, #archivos…): el panel de la pestaña activa.']],
     extra: { titulo: 'Teclado', columnas: ['Tecla', 'Qué hace'], filas: [['← →', 'Pasa a la pestaña anterior o siguiente (en círculo, sin las deshabilitadas) y la activa.'], ['Inicio / Fin', 'Va a la primera o a la última.'], ['Tab', 'Entra al panel activo: solo la pestaña activa está en el recorrido.']] },
   },
+  pasos: {
+    titulo: 'Pasos', grupo: 'Navegación', origen: 'vue/components/ui/Pasos.vue',
+    desc: 'Muestra en qué paso va un proceso (altas, enviar a firmar, cobros guiados). No valida ni avanza: la app decide cuándo pasar. Cada estado lleva número o ícono, nunca solo color.',
+    demos: { '01-proceso': ['Horizontal y vertical', 'Estados deducidos de «actual», pasos hechos navegables y un paso con error con su texto de qué hacer.'] },
+    props: [['pasos', 'Array', '[]', '{ valor, texto, detalle?, estado? }. estado: hecho, actual, error o pendiente.'], ['actual', 'String', '—', 'valor del paso actual; si un paso no trae estado, se deduce de acá.'], ['orientacion', 'String', "'horizontal'", "'horizontal' o 'vertical'. En pantallas angostas la horizontal pasa a vertical."],
+      ['navegable', 'Boolean', 'false', 'Los pasos hechos son botones que emiten elegir.'], ['etiqueta', 'String', "'Pasos'", 'aria-label de la lista.']],
+    eventos: [['elegir', 'Se tocó un paso hecho (con navegable); recibe el paso.']],
+  },
   'action-card': {
     titulo: 'ActionCard', grupo: 'Datos', origen: 'vue/components/ui/ActionCard.vue',
     desc: 'Atajo grande a algo que se hace seguido: ícono, título, explicación y un número de pendientes. Es un solo elemento clicable: un enlace con href, un enlace de router con to, o un botón.',
