@@ -18,3 +18,11 @@ export function vencimiento(t) {
 export function iniciales(nombre) {
   return (nombre || '?').split(/\s+/).slice(0, 2).map((p) => p[0]?.toUpperCase()).join('');
 }
+
+// Tamaño de archivo legible en es-AR: «842 KB», «1,5 MB».
+export function tamanoArchivo(bytes) {
+  const n = Number(bytes) || 0;
+  if (n < 1024) return `${n} B`;
+  const u = n < 1024 ** 2 ? [1024, 'KB'] : n < 1024 ** 3 ? [1024 ** 2, 'MB'] : [1024 ** 3, 'GB'];
+  return `${(n / u[0]).toLocaleString('es-AR', { maximumFractionDigits: n / u[0] < 10 ? 1 : 0 })} ${u[1]}`;
+}

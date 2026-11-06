@@ -183,6 +183,14 @@ export const COMPONENTES = {
     eventos: [['mas', 'Se tocó «Ver más movimientos»; la app trae y suma los siguientes.']],
     slots: [['evento', 'Reemplaza el contenido de cada fila. Recibe { evento }.']],
   },
+  adjuntos: {
+    titulo: 'Adjuntos', grupo: 'Formularios', origen: 'vue/components/ui/Adjuntos.vue',
+    desc: 'Zona para soltar o elegir archivos y lista de lo cargado, con progreso, error y reintento. Filtra tipo y tamaño y entrega los File: la subida real la hace siempre la app, que reporta el estado de cada archivo por props.',
+    demos: { '01-carga': ['Carga con estados', 'Soltá o elegí archivos (se simula el progreso). Hay uno listo, uno subiendo y uno con error y reintento.'] },
+    props: [['archivos', 'Array', '[]', '{ id, nombre, tamano, estado, progreso?, error? }. estado: subiendo, listo o error; progreso de 0 a 100.'], ['aceptar', 'String', '—', "Como el atributo accept del input: '.pdf,image/*'."], ['maximo', 'Number', '—', 'Bytes máximos por archivo.'],
+      ['multiple', 'Boolean', 'true', 'Permite más de un archivo.'], ['deshabilitado', 'Boolean', 'false', 'Bloquea elegir y soltar.'], ['etiqueta', 'String', "'Adjuntos'", 'aria-label de la sección.']],
+    eventos: [['agregar', 'Archivos que pasaron el filtro: File[].'], ['rechazado', '{ archivo, motivo }: no cumplía tipo o tamaño. El motivo también se muestra y se anuncia.'], ['quitar', 'Se quitó un archivo (botón ✕ o Suprimir en la fila); recibe el archivo.'], ['reintentar', 'Se tocó «Reintentar» en un archivo con error.']],
+  },
   'action-card': {
     titulo: 'ActionCard', grupo: 'Datos', origen: 'vue/components/ui/ActionCard.vue',
     desc: 'Atajo grande a algo que se hace seguido: ícono, título, explicación y un número de pendientes. Es un solo elemento clicable: un enlace con href, un enlace de router con to, o un botón.',

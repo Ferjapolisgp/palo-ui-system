@@ -13,7 +13,7 @@ export const NAVEGACION = [
     ['Base', ['boton', 'campo', 'etiqueta', 'avatar', 'logo', 'icono', 'marco-corte'].map(comp)],
     ['Navegación', ['barra-lateral', 'cuenta-usuario', 'pestanas', 'pasos', 'cabecera', 'pie-pagina', 'paginacion'].map(comp)],
     ['Datos', ['tabla', 'data-table', 'descriptions', 'tarjeta', 'profile-card', 'action-card', 'kanban', 'historial', 'indicador', 'barra-uso', 'grilla-cupos', 'skeleton'].map(comp)],
-    ['Formularios', ['field', 'currency-input', 'date-picker'].map(comp)],
+    ['Formularios', ['field', 'currency-input', 'date-picker', 'adjuntos'].map(comp)],
   ['Filtros', ['barra-herramientas', 'desplegable', 'interruptor'].map(comp)],
     ['Respuesta', ['aviso', 'advertencia', 'notificacion', 'confirmar', 'vacio'].map(comp)],
   ['Capas', ['modal', 'drawer', 'tooltip', 'popover', 'overlay'].map(comp)],
