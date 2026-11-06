@@ -24,7 +24,7 @@ export const COMPONENTES = {
     titulo: 'Avatar', grupo: 'Base', origen: 'vue/components/ui/Avatar.vue',
     desc: 'Iniciales de una persona en un cuadrado; en tamaño chico (hasta 24 px) solo la primera letra. Sin persona asignada (incógnito) se muestra punteado con el ícono de usuario.',
     demos: { '01-tamanos': ['Tamaños y vacío', 'El tamaño va en píxeles; la letra escala sola.'] },
-    props: [['nombre', 'String', '—', 'Nombre completo; se toman dos iniciales (una sola si tam ≤ 24). Sin nombre, ícono de usuario.'], ['tam', 'Number', '22', 'Lado en píxeles.']],
+    props: [['nombre', 'String', '—', 'Nombre completo; se toman dos iniciales (una sola si tam ≤ 24). Sin nombre, ícono de usuario.'], ['imagen', 'String', '—', 'URL de la foto; reemplaza a las iniciales.'], ['tam', 'Number', '22', 'Lado en píxeles.']],
   },
   logo: {
     titulo: 'Logo', grupo: 'Base', origen: 'vue/components/ui/Marca.vue',
