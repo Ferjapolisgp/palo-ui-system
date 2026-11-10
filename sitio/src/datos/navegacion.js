@@ -7,7 +7,7 @@ const comp = (id) => [COMPONENTES[id].titulo, `/componentes/${id}`];
 export const NAVEGACION = [
   { seccion: 'Guía', clave: 'guia', grupos: [
     ['Empezar', [['Inicio', '/'], ['Instalación', '/instalacion']]],
-    ['Fundamentos', [['Marca', '/marca'], ['Color', '/color'], ['Tipografía', '/tipografia'], ['Reglas de uso', '/reglas']]],
+    ['Fundamentos', [['Marca', '/marca'], ['Color', '/color'], ['Tipografía', '/tipografia'], ['Temas de marca', '/temas'], ['Reglas de uso', '/reglas']]],
   ] },
   { seccion: 'Componentes', clave: 'componentes', grupos: [
     ['Base', ['boton', 'campo', 'etiqueta', 'avatar', 'logo', 'icono', 'marco-corte'].map(comp)],

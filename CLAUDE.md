@@ -29,6 +29,7 @@ El sitio se publica en https://ferjapolisgp.github.io/palo-ui-system/ con cada p
 | Ruta | Qué |
 |---|---|
 | `css/tokens.css` | **Único lugar con valores**: colores (oscuro y claro), series, radios, sombras, capas, fuentes |
+| `css/temas.css` | Temas de marca (`data-marca`, `aplicarMarca()`): cambian señal, logo y el tinte de íconos, etiquetas neutras y detalles. Nunca estados ni series |
 | `css/base.css` | Reset y piezas solo-CSS: `button`, `.primario`, `.peligro`, `.icono`, campos, `.tag`, `.tabla-simple`, `.titulo-pagina`, `.etiqueta-seccion`, `.encuadre`, `.marco-corte`, `.trama`, `.calca`, `.atajo` |
 | `vue/components/ui/` | Interfaz genérica |
 | `vue/components/graficos/` | Gráficos SVG propios (sin librerías de charts) |

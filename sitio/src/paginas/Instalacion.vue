@@ -35,6 +35,7 @@ npm install ../palo-ui-system" />
       <Codigo suelto codigo="import { aplicarTema } from 'palo-ui-system';
 
 aplicarTema('claro'); // 'claro' | 'oscuro' | 'sistema'" />
+      <p class="sub">Para pintar la herramienta con su color, mirá <RouterLink to="/temas">Temas de marca</RouterLink>.</p>
     </section>
   </article>
 </template>
