@@ -23,7 +23,7 @@ const emit = defineEmits(['update:modelValue']);
 </template>
 
 <style scoped>
-.cab { display: flex; flex-direction: column; gap: 12px; padding: 18px 24px 0; border-bottom: 1px solid var(--borde); }
+.cab { display: flex; flex-direction: column; gap: 12px; padding: 18px 24px 18px; border-bottom: 1px solid var(--borde); }
 .fila { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 h1 { margin: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: -.01em; }
 .serie { padding: 2px 6px; border-radius: var(--r-sm); background: var(--senal); color: var(--senal-txt); font: 700 .62rem var(--mono); letter-spacing: .12em; }

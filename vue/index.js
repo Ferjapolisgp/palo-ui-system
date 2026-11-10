@@ -40,6 +40,7 @@ export { default as Popover } from './components/ui/Popover.vue';
 export { default as Skeleton } from './components/ui/Skeleton.vue';
 export { default as Spin } from './components/ui/Spin.vue';
 export { default as Tarjeta } from './components/ui/Tarjeta.vue';
+export { default as TarjetaProceso } from './components/ui/TarjetaProceso.vue';
 export { default as ProfileCard } from './components/ui/ProfileCard.vue';
 export { default as Tooltip } from './components/ui/Tooltip.vue';
 export { default as Vacio } from './components/ui/Vacio.vue';
