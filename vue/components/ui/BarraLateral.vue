@@ -34,7 +34,7 @@ const atributos = (it) => (!it.ruta ? { type: 'button' } : props.enlace ? { to: 
         <p v-if="g.titulo">{{ g.titulo }}</p>
         <component :is="etiqueta(it)" v-for="it in g.items" :key="it.texto" v-bind="atributos(it)" class="item" :class="{ on: esActivo(it) }"
                    :aria-current="esActivo(it) ? 'page' : undefined" :title="colapsada ? it.texto : undefined" @click="emit('navegar', it)">
-          <Icono v-if="it.icono" :nombre="it.icono" :tam="colapsada ? 24 : 18" />
+          <Icono v-if="it.icono" :nombre="it.icono" :tam="colapsada ? 24 : 18" acento />
           <span class="texto">{{ it.texto }}</span>
           <kbd v-if="it.atajo && !colapsada" class="atajo">{{ it.atajo }}</kbd>
           <span v-if="it.contador != null" class="contador" :class="it.tono && `tono-${it.tono}`">{{ typeof it.contador === 'number' ? it.contador.toLocaleString('es-AR') : it.contador }}</span>

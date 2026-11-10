@@ -3,14 +3,16 @@ import { computed } from 'vue';
 import { ICONOS } from '../../lib/iconos.js';
 
 // Ícono de trazo que hereda el color del texto. Es decorativo: lo nombra el texto de al lado o el aria-label del botón.
-const props = defineProps({ nombre: { type: String, required: true }, tam: { type: Number, default: 18 } });
+// Con `acento` toma el color de la perilla --icono (css/temas.css): para íconos neutros de menús y listas, no para los de estado.
+const props = defineProps({ nombre: { type: String, required: true }, tam: { type: Number, default: 18 }, acento: Boolean });
 const trazo = computed(() => ICONOS[props.nombre] || '');
 </script>
 
 <template>
-  <svg class="icono-svg" :width="tam" :height="tam" viewBox="0 0 24 24" aria-hidden="true" v-html="trazo" />
+  <svg class="icono-svg" :class="{ acento }" :width="tam" :height="tam" viewBox="0 0 24 24" aria-hidden="true" v-html="trazo" />
 </template>
 
 <style scoped>
 .icono-svg { flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.acento { color: var(--icono); }
 </style>
