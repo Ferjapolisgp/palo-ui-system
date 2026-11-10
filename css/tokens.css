@@ -16,6 +16,8 @@
   --logo-fondo: #2f9e66; --logo-figura: #ffffff; --logo-flor: #c9b2ff;
   /* Series de gráficos: orden fijo, validado para daltonismo contra --bg y --panel. Nunca la señal. */
   --serie-1: #3987e5; --serie-2: #d95926; --serie-3: #199e70; --serie-4: #c98500;
+  /* Perillas de marca (css/temas.css): cómo se tiñen íconos, etiquetas neutras y detalles. Por defecto, igual que antes */
+  --icono: currentColor; --tag: var(--tenue); --detalle: var(--sub);
   --ui: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "Geist Mono", ui-monospace, Consolas, monospace;
   --display: "Archivo", "Geist", system-ui, sans-serif;

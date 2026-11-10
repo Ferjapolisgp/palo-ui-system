@@ -22,7 +22,7 @@ button.primario::after { content: ""; position: absolute; inset: -1px; pointer-e
 button.primario:hover { background: color-mix(in srgb, var(--senal) 22%, var(--panel)); border-color: color-mix(in srgb, var(--senal) 55%, transparent); }
 /* Encuadre: esquinas en «L» pegadas al borde de cualquier pieza (tarjetas, avisos, paneles, diálogos). Quien lo usa
    tiene que estar posicionado (relative o el que traiga). Color con --encuadre-color. */
-.encuadre::after { content: ""; position: absolute; inset: 0; pointer-events: none; --esq: 8px; --l: linear-gradient(var(--encuadre-color, var(--sub)), var(--encuadre-color, var(--sub)));
+.encuadre::after { content: ""; position: absolute; inset: 0; pointer-events: none; --esq: 8px; --l: linear-gradient(var(--encuadre-color, var(--detalle)), var(--encuadre-color, var(--detalle)));
   background: var(--l) left top / var(--esq) var(--esp, 1px) no-repeat, var(--l) left top / var(--esp, 1px) var(--esq) no-repeat,
     var(--l) right top / var(--esq) var(--esp, 1px) no-repeat, var(--l) right top / var(--esp, 1px) var(--esq) no-repeat,
     var(--l) left bottom / var(--esq) var(--esp, 1px) no-repeat, var(--l) left bottom / var(--esp, 1px) var(--esq) no-repeat,
@@ -50,7 +50,7 @@ p.error { margin: 8px 0; }
 @media (max-width: 860px) { .app-con-nav { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); } }
 
 /* Etiqueta rectangular de una palabra (resultados, banderas); el color sale de --c o de la variante */
-.tag { --c: var(--tenue); display: inline-flex; align-items: center; padding: 2px 8px; border: 0; border-radius: var(--r-sm); background: color-mix(in srgb, var(--c) 16%, transparent); font: 600 .72rem/1.3 var(--ui); white-space: nowrap; color: color-mix(in srgb, var(--c) 80%, var(--txt)); }
+.tag { --c: var(--tag); display: inline-flex; align-items: center; padding: 2px 8px; border: 0; border-radius: var(--r-sm); background: color-mix(in srgb, var(--c) 16%, transparent); font: 600 .72rem/1.3 var(--ui); white-space: nowrap; color: color-mix(in srgb, var(--c) 80%, var(--txt)); }
 .tag.ok { --c: var(--ok); } .tag.error { --c: var(--error); } .tag.aviso { --c: var(--aviso); } .tag.info { --c: var(--info); }
 /* Tabla de pantallas de administración */
 .tabla-simple { position: relative; overflow-x: auto; background: var(--panel); border: 1px solid var(--borde); border-radius: var(--r-lg); }

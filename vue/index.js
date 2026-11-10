@@ -44,7 +44,7 @@ export { default as TarjetaProceso } from './components/ui/TarjetaProceso.vue';
 export { default as ProfileCard } from './components/ui/ProfileCard.vue';
 export { default as Tooltip } from './components/ui/Tooltip.vue';
 export { default as Vacio } from './components/ui/Vacio.vue';
-export { aplicarTema, leerTema } from './lib/tema.js';
+export { aplicarTema, leerTema, aplicarMarca, leerMarca, variablesMarca, textoSobre, contraste } from './lib/tema.js';
 export { alertar, cerrarNotificacion, cerrarTodas, notificar, pausarNotificacion, reanudarNotificacion } from './lib/notificaciones.js';
 export { ICONOS } from './lib/iconos.js';
 export { agruparSecreto, uriTotp } from './lib/mfa.js';

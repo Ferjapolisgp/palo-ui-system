@@ -9,6 +9,7 @@
     "./css": "./css/palo-ui-system.css",
     "./tokens.css": "./css/tokens.css",
     "./base.css": "./css/base.css",
+    "./temas.css": "./css/temas.css",
     "./fonts/*": "./fonts/*"
   },
   "files": [

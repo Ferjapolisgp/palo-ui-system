@@ -1,0 +1,42 @@
+/* Temas de marca. Cada herramienta pone su color sin tocar componentes:
+     <html data-marca="naranja">        un tema de esta hoja
+     aplicarMarca('naranja')            lo mismo desde JavaScript (y lo recuerda)
+     aplicarMarca({ senal: [claro, oscuro] })   un tema propio, sin escribir CSS
+   Funciona en claro y oscuro con light-dark(): no hace falta repetir el bloque por modo.
+   Se carga después de tokens.css (mismo peso de selector: gana el orden).
+
+   Perillas que mueve un tema:
+     --senal, --senal-txt     acción principal, activo y foco (y el texto que va sobre ella)
+     --logo-fondo, --logo-flor  el cuadro y la flor del cardón; son de marca, no de la interfaz
+     --tinte                  cuánto de la marca se mezcla en lo neutro (0 a 100 %)
+     --icono, --tag, --detalle  íconos neutros de menús, etiquetas sin estado y esquinas de encuadre:
+                              neutros con un tinte de la marca; nunca la señal pura (la señal no pinta datos)
+   Los estados (--ok, --aviso, --error, --info) y las series de gráficos no se tocan: son del dato. */
+
+:root[data-marca], [data-marca] {
+  --tinte: 35%;
+  --icono: color-mix(in srgb, var(--senal) var(--tinte), var(--sub));
+  --tag: color-mix(in srgb, var(--senal) var(--tinte), var(--tenue));
+  --detalle: color-mix(in srgb, var(--senal) calc(var(--tinte) + 15%), var(--sub));
+}
+
+/* Naranja: el de Ticketera. Claro oscurecido para pasar AA con texto blanco */
+:root[data-marca="naranja"], [data-marca="naranja"] {
+  --senal: light-dark(#c24a06, #ff6a1f); --senal-txt: light-dark(#ffffff, #14161a);
+  --logo-fondo: light-dark(#c24a06, #ff6a1f); --logo-figura: #ffffff; --logo-flor: #ffe0c2;
+}
+/* Amarillo: señal amarilla de la primera Ticketera. Texto oscuro sobre la señal en los dos modos */
+:root[data-marca="amarillo"], [data-marca="amarillo"] {
+  --senal: light-dark(#876400, #f2c230); --senal-txt: light-dark(#ffffff, #14161a);
+  --logo-fondo: light-dark(#876400, #f2c230); --logo-figura: light-dark(#ffffff, #14161a); --logo-flor: light-dark(#ffe9a8, #8a6a00);
+}
+:root[data-marca="cian"], [data-marca="cian"] {
+  --senal: light-dark(#0a7ea4, #22b8e0); --senal-txt: light-dark(#ffffff, #14161a);
+  --logo-fondo: light-dark(#0a7ea4, #22b8e0); --logo-figura: light-dark(#ffffff, #14161a); --logo-flor: light-dark(#c9f0ff, #0b4f68);
+}
+:root[data-marca="rosa"], [data-marca="rosa"] {
+  --senal: light-dark(#c4287a, #ff5ea8); --senal-txt: light-dark(#ffffff, #14161a);
+  --logo-fondo: light-dark(#c4287a, #ff5ea8); --logo-figura: light-dark(#ffffff, #14161a); --logo-flor: light-dark(#ffd3e8, #7a1649);
+}
+/* Un tema propio (aplicarMarca con un objeto) trae sus valores en línea sobre <html> */
+:root[data-marca="propia"], [data-marca="propia"] { --logo-figura: #ffffff; --logo-flor: #ffffff; }
